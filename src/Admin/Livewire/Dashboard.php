@@ -4,6 +4,7 @@ namespace Xtend\Extensions\Lunar\Admin\Livewire;
 
 use Filament\Notifications\Actions\Action;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Lunar\Models\Customer;
 use Lunar\Models\CustomerGroup;
 use Lunar\Models\Order;
@@ -107,20 +108,21 @@ class Dashboard extends \Lunar\Hub\Http\Livewire\Dashboard
     public function render()
     {
         // @todo - this is temporary before we implement tests.
-        // $order = Order::find(rand(700, 800));
-        // $order->notify(
-        //     Notification::make()
-        //         ->success()
-        //         ->system()
-        //         ->title('New order placed successfully!')
-        //         ->body("**{$order->customer->fullName}** ordered **{$order->lines->count()}** products.")
-        //         ->actions([
-        //             Action::make('view')
-        //               ->button()
-        //               ->url(route('hub.orders.show', ['order' => $order])),
-        //         ])
-        //         ->toDatabase()
-        // );
+//         $order = \Xtend\Extensions\Lunar\Core\Models\Order::find(745);
+//         $order->notify(
+//             Notification::make()
+//                 ->success()
+//                 ->system()
+//                 ->id(Str::random())
+//                 ->title('New order placed successfully!')
+//                 ->body("**{$order->customer->fullName}** ordered **{$order->lines->count()}** products.")
+//                 ->actions([
+//                     Action::make('view')
+//                       ->button()
+//                       ->url(route('hub.orders.show', ['order' => $order])),
+//                 ])
+//                 ->toDatabase()
+//         );
 
         return view('adminhub::livewire.dashboard');
     }

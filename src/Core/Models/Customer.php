@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Lunar\Base\Casts\AsAttributeData;
 use Lunar\Base\Traits\LogsActivity;
 use Lunar\Models\Language;
@@ -35,6 +36,7 @@ class Customer extends \Lunar\Models\Customer
                 Notification::make()
                     ->success()
                     ->system()
+                    ->id(Str::random())
                     ->title('New customer registered successfully!')
                     ->body('System detected new customer registration named **'.$customer->fullName.'**.')
                     ->actions([

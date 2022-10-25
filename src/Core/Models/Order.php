@@ -5,6 +5,7 @@ namespace Xtend\Extensions\Lunar\Core\Models;
 use Filament\Notifications\Actions\Action;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Lunar\Base\Casts\Price;
 use Lunar\Base\Casts\TaxBreakdown;
 use Xtend\Extensions\Filament\Notifications\Notification;
@@ -40,6 +41,7 @@ class Order extends \Lunar\Models\Order
                 Notification::make()
                     ->success()
                     ->system()
+                    ->id(Str::random())
                     ->title('New order placed successfully!')
                     ->body("**{$order->customer->fullName}** ordered **{$order->lines->count()}** products.")
                     ->actions([
