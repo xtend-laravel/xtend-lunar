@@ -106,9 +106,9 @@
                 @endif
             @endif
 
-            {{--            <div id="urls"> --}}
-            {{--                @include('adminhub::partials.urls') --}}
-            {{--            </div> --}}
+            <div id="urls">
+                @include('adminhub::partials.urls')
+            </div>
 
             <div id="associations">
                 @include('adminhub::partials.products.editing.associations')

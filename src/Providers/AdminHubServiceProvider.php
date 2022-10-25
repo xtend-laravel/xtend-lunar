@@ -23,6 +23,8 @@ use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderShow;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProductFeatures\ProductFeatureEdit;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProductOptions\OptionEdit;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProductOptions\OptionValueEdit;
+use Xtend\Extensions\Lunar\Admin\Livewire\Components\Products\ProductCreate;
+use Xtend\Extensions\Lunar\Admin\Livewire\Components\Products\ProductShow;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProfileForm;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\SwitchLanguage;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Timeline;
@@ -77,6 +79,9 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
     protected function registerProductComponents()
     {
         parent::registerProductComponents();
+
+        Livewire::component('hub.components.products.show', ProductShow::class);
+        Livewire::component('hub.components.products.create', ProductCreate::class);
 
         Livewire::component('hub.pages.product-options.product-options-index', ProductOptionsIndex::class);
         Livewire::component('hub.components.product-options.edit', OptionEdit::class);
