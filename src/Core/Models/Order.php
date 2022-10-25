@@ -22,15 +22,15 @@ class Order extends \Lunar\Models\Order
      * {@inheritDoc}
      */
     protected $casts = [
-        'tax_breakdown'  => TaxBreakdown::class,
-        'meta'           => 'object',
-        'placed_at'      => 'datetime',
-        'sub_total'      => Price::class,
+        'tax_breakdown' => TaxBreakdown::class,
+        'meta' => 'object',
+        'placed_at' => 'datetime',
+        'sub_total' => Price::class,
         'discount_total' => Price::class,
-        'tax_total'      => Price::class,
-        'total'          => Price::class,
+        'tax_total' => Price::class,
+        'total' => Price::class,
         'shipping_total' => Price::class,
-        'legacy_data'    => AsCollection::class,
+        'legacy_data' => AsCollection::class,
     ];
 
     protected static function booted(): void

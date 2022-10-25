@@ -11,7 +11,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "illuminate/contracts": "^9.0"
+        "illuminate/contracts": "^9.0",
+        "xtend-laravel/feature-lunar-form-builder": "*"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -21,6 +22,13 @@
         "pestphp/pest-plugin-laravel": "^1.1",
         "phpunit/phpunit": "^9.5"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./features/*",
+            "symlink": true
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Xtend\\Extensions\\Lunar\\": "src"

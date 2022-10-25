@@ -18,7 +18,8 @@ class MenuList extends Component
         public Collection $items,
         public string $active,
         public string $menuType = '',
-    ) {}
+    ) {
+    }
 
     /**
      * Get the view / contents that represent the component.

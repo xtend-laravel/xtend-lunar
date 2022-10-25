@@ -30,7 +30,6 @@ use Xtend\Extensions\Lunar\Admin\Livewire\Dashboard;
 use Xtend\Extensions\Lunar\Admin\Livewire\Pages\ProductFeatures\FeaturesIndex;
 use Xtend\Extensions\Lunar\Admin\Livewire\Pages\ProductOptions\ProductOptionsIndex;
 use Xtend\Extensions\Lunar\Admin\Menu\SidebarMenu;
-use Xtend\Extensions\Lunar\Admin\Views\Components\MenuList;
 
 class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 {
@@ -48,6 +47,7 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         $this->app->register(TranslationServiceProvider::class);
         $this->app->singleton('translation.loader', function ($app) {
             $app['path.lang'] = __DIR__.'/../Admin/Resources/lang';
+
             return new FileLoader($app['files'], $app['path.lang']);
         });
 

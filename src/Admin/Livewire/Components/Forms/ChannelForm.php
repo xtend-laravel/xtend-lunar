@@ -2,10 +2,9 @@
 
 namespace Xtend\Extensions\Lunar\Admin\Livewire\Components\Forms;
 
-use Xtend\Extensions\Lunar\Admin\Forms;
-use Xtend\Extensions\Lunar\Admin\Forms\LunarForm;
+use XtendLunar\Features\FormBuilder;
 
-class ChannelForm extends LunarForm
+class ChannelForm extends FormBuilder\Base\LunarForm
 {
     protected bool $showDeleteDangerZone = true;
 
@@ -29,10 +28,10 @@ class ChannelForm extends LunarForm
     protected function schema(): array
     {
         return [
-            Forms\Fields\Input\Text::make('name')->required(),
-            Forms\Fields\Input\Text::make('handle')->required(),
-            Forms\Fields\Input\Text::make('url')->required(),
-            Forms\Fields\Input\Toggle::make('default')
+            FormBuilder\Fields\Text::make('name')->required(),
+            FormBuilder\Fields\Text::make('handle')->required(),
+            FormBuilder\Fields\Text::make('url')->required(),
+            FormBuilder\Fields\Toggle::make('default')
                 ->label('adminhub::inputs.default.label')
                 ->required(),
         ];

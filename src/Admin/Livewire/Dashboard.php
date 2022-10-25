@@ -2,7 +2,6 @@
 
 namespace Xtend\Extensions\Lunar\Admin\Livewire;
 
-use App\Models\User;
 use Filament\Notifications\Actions\Action;
 use Illuminate\Support\Facades\DB;
 use Lunar\Models\Customer;

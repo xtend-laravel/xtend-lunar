@@ -4,10 +4,9 @@ namespace Xtend\Extensions\Lunar\Admin\Livewire\Components;
 
 use Illuminate\Support\Facades\Hash;
 use Lunar\Models\Language;
-use Xtend\Extensions\Lunar\Admin\Forms;
-use Xtend\Extensions\Lunar\Admin\Forms\LunarForm;
+use XtendLunar\Features\FormBuilder;
 
-class ProfileForm extends LunarForm
+class ProfileForm extends FormBuilder\Base\LunarForm
 {
     public ?string $password = null;
 
@@ -28,15 +27,15 @@ class ProfileForm extends LunarForm
     protected function schema(): array
     {
         return [
-            Forms\Fields\Input\Text::make('firstname')->required(),
-            Forms\Fields\Input\Text::make('lastname')->required(),
-            Forms\Fields\Input\Text::make('email')->required(),
-            Forms\Fields\Input\Select::make('language_id')->options(
+            FormBuilder\Fields\Text::make('firstname')->required(),
+            FormBuilder\Fields\Text::make('lastname')->required(),
+            FormBuilder\Fields\Text::make('email')->required(),
+            FormBuilder\Fields\Select::make('language_id')->options(
                 options: Language::all()->map(fn ($language) => ['label' => $language->name, 'value' => $language->id])->toArray(),
                 relationship: true,
             ),
-            Forms\Fields\Input\Password::make('password'),
-            Forms\Fields\Input\Password::make('currentPassword'),
+            FormBuilder\Fields\Password::make('password'),
+            FormBuilder\Fields\Password::make('currentPassword'),
         ];
     }
 

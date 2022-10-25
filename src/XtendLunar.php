@@ -10,7 +10,6 @@ use Livewire\Livewire;
 use Lunar\Base\ShippingModifiers;
 use Lunar\Facades\ModelManifest;
 use Lunar\Facades\Payments;
-use Lunar\Hub\Models\Staff;
 use Lunar\Models\Address;
 use Lunar\Models\Brand;
 use Lunar\Models\Cart;
@@ -105,17 +104,14 @@ class XtendLunar extends ExtendsProvider
 
     protected function bootWithEvents(): void
     {
-
     }
 
     protected function bootWithFieldTypes()
     {
-
     }
 
     protected function bootWithComponents()
     {
-
     }
 
     /**

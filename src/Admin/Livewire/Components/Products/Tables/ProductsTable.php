@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 use Lunar\Hub\Http\Livewire\Traits\Notifies;
-use Lunar\LivewireTables\Components\Columns\ImageColumn;
 use Lunar\Models\Brand;
 use Lunar\Models\Price;
 use Lunar\Models\Product;
@@ -69,7 +68,6 @@ class ProductsTable extends Component implements Tables\Contracts\HasTable
      */
     protected function getTableColumns(): array
     {
-
         // Product::each(function (Product $product) {
         //     $product->primary_category_id = $product->categoryCollection->id ?? null;
         //     $product->update();
@@ -189,20 +187,20 @@ class ProductsTable extends Component implements Tables\Contracts\HasTable
                         ])->columns(4),
                 ])
                 ->query(function (Builder $query, array $data): Builder {
-                  if (is_numeric($data['price_from'])) {
-                      $data['price_from'] = (int) number_format($data['price_from'] ?? 0, 2, '', '');
-                  }
-                  if (is_numeric($data['price_to'])) {
-                      $data['price_to'] = (int) number_format($data['price_to'], 2, '', '');
-                  }
+                    if (is_numeric($data['price_from'])) {
+                        $data['price_from'] = (int) number_format($data['price_from'] ?? 0, 2, '', '');
+                    }
+                    if (is_numeric($data['price_to'])) {
+                        $data['price_to'] = (int) number_format($data['price_to'], 2, '', '');
+                    }
 
-                  return $query
-                      ->when(filled($data['sku']), fn (Builder $query, $fullName): Builder => $query->whereHas('baseVariant',
-                          fn (Builder $query) => $query->where('sku', 'like', '%'.$data['sku'].'%')
-                      ))
-                      ->when($data['name'] ?? null, fn (Builder $query, $name) => $query->where('attribute_data->name->value', 'like', '%'.$name.'%'))
-                      ->when($data['price_from'] ?? null, fn (Builder $query, $from): Builder => $query->whereHas('baseVariant.basePrices', fn (Builder $query) => $query->whereRaw('price >= ?', [$from])->groupBy('id')))
-                      ->when($data['price_to'] ?? null, fn (Builder $query, $to): Builder => $query->whereHas('baseVariant.basePrices', fn (Builder $query) => $query->whereRaw('price <= ?', [$to])->groupBy('id')));
+                    return $query
+                        ->when(filled($data['sku']), fn (Builder $query, $fullName): Builder => $query->whereHas('baseVariant',
+                            fn (Builder $query) => $query->where('sku', 'like', '%'.$data['sku'].'%')
+                        ))
+                        ->when($data['name'] ?? null, fn (Builder $query, $name) => $query->where('attribute_data->name->value', 'like', '%'.$name.'%'))
+                        ->when($data['price_from'] ?? null, fn (Builder $query, $from): Builder => $query->whereHas('baseVariant.basePrices', fn (Builder $query) => $query->whereRaw('price >= ?', [$from])->groupBy('id')))
+                        ->when($data['price_to'] ?? null, fn (Builder $query, $to): Builder => $query->whereHas('baseVariant.basePrices', fn (Builder $query) => $query->whereRaw('price <= ?', [$to])->groupBy('id')));
                 }),
             Filters\Filter::make('brand_status_trashed')
                  ->form([
@@ -224,7 +222,7 @@ class ProductsTable extends Component implements Tables\Contracts\HasTable
                         ->when($data['primary_category'] ?? null, fn (Builder $query, $primaryCategory) => $query->where('primary_category_id', $primaryCategory))
                         ->when($data['brand'] ?? null, fn (Builder $query, $brand) => $query->where('brand_id', $brand))
                         ->when($data['status'] ?? null, fn (Builder $query, $status) => $query->where('status', $status));
-                        //->when($data['trashed'] ?? null, fn (Builder $query, $trashed) => $trashed ? $query->onlyTrashed() : $query->withoutTrashed());
+                    //->when($data['trashed'] ?? null, fn (Builder $query, $trashed) => $trashed ? $query->onlyTrashed() : $query->withoutTrashed());
                 }),
         ];
     }

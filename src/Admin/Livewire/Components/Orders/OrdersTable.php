@@ -111,19 +111,19 @@ class OrdersTable extends Component implements Tables\Contracts\HasTable
             TextColumn::make('billingAddress.fullName')
                 ->label('Customer')
                 ->sortable(query: function (Builder $query, string $direction) use ($prefix): Builder {
-                  return $query->orderBy(
-                      OrderAddress::select('first_name')
-                          ->whereColumn('order_id', $prefix.'orders.id')
-                          ->where('type', 'billing'), $direction);
+                    return $query->orderBy(
+                        OrderAddress::select('first_name')
+                            ->whereColumn('order_id', $prefix.'orders.id')
+                            ->where('type', 'billing'), $direction);
                 })
                 ->url(fn (Order $record): string => route('hub.customers.show', ['customer' => $record->customer->id ?? 0])),
             TextColumn::make('billingAddress.country.name')
                 ->getStateUsing(fn (Order $record) => $record->billingAddress?->country?->emoji.' '.$record->billingAddress?->country?->name ?? '')
                 ->sortable('name', function (Builder $query, string $direction) use ($prefix): Builder {
-                  return $query->orderBy(
-                      OrderAddress::select('country_id')
-                          ->whereColumn('order_id', $prefix.'orders.id')
-                          ->where('type', 'billing'), $direction);
+                    return $query->orderBy(
+                        OrderAddress::select('country_id')
+                            ->whereColumn('order_id', $prefix.'orders.id')
+                            ->where('type', 'billing'), $direction);
                 })
                 ->label('Country'),
             BadgeColumn::make('total')
