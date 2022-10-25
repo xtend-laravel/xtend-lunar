@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static void withBoot()
  * @method static void bootWithModels(Collection $models)
  *
- * @see \Xtend\Extensions\Lunar\src\XtendLunar
+ * @see \Xtend\Extensions\Lunar\XtendLunar
  */
 class XtendLunar extends Facade
 {
@@ -21,6 +21,6 @@ class XtendLunar extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \Xtend\Extensions\Lunar\src\XtendLunar::class;
+        return \Xtend\Extensions\Lunar\XtendLunar::class;
     }
 }
