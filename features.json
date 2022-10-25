@@ -7,10 +7,10 @@
         "active": true
     },
     {
-        "name": "Notifications",
-        "repo": "xtend-laravel/feature-lunar-notifications",
-        "namespace": "Xtend\\Lunar\\Notifications",
-        "description": "Notifications for Lunar",
+        "name": "NotifyTimeline",
+        "repo": "xtend-laravel/feature-lunar-notify-timeline",
+        "namespace": "Xtend\\Lunar\\NotifyTimeline",
+        "description": "Timeline with Filament Notifications for Lunar",
         "active": true
     },
     {
@@ -32,13 +32,6 @@
         "repo": "xtend-laravel/feature-lunar-sidebar-menu",
         "namespace": "Xtend\\Lunar\\SidebarMenu",
         "description": "Sidebar menu for Lunar",
-        "active": true
-    },
-    {
-        "name": "Timeline",
-        "repo": "xtend-laravel/feature-lunar-timeline",
-        "namespace": "Xtend\\Lunar\\Timeline",
-        "description": "Timeline for Lunar",
         "active": true
     },
     {
