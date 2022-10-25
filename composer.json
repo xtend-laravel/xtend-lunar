@@ -42,19 +42,6 @@
             "pestphp/pest-plugin": true
         }
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Xtend\\Extensions\\Lunar\\Providers\\AdminHubServiceProvider",
-                "Xtend\\Extensions\\Lunar\\Providers\\LunarServiceProvider",
-                "Xtend\\Extensions\\Lunar\\Providers\\LivewireTablesServiceProvider",
-                "Xtend\\Extensions\\Lunar\\Providers\\ScoutDatabaseServiceProvider"
-            ],
-            "aliases": {
-                "XtendLaravel": "Xtend\\Extensions\\Lunar\\Facades\\XtendLunar"
-            }
-        },
-        "minimum-stability": "dev",
-        "prefer-stable": true
-    }
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
