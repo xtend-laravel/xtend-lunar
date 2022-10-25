@@ -1,0 +1,51 @@
+[
+    {
+        "name": "FormBuilder",
+        "repo": "xtend-laravel/feature-lunar-form-builder",
+        "namespace": "Xtend\\Lunar\\FormBuilder",
+        "description": "Form builder for Lunar",
+        "active": true
+    },
+    {
+        "name": "Notifications",
+        "repo": "xtend-laravel/feature-lunar-notifications",
+        "namespace": "Xtend\\Lunar\\Notifications",
+        "description": "Notifications for Lunar",
+        "active": true
+    },
+    {
+        "name": "ProductFeatures",
+        "repo": "xtend-laravel/feature-lunar-product-features",
+        "namespace": "Xtend\\Lunar\\ProductFeatures",
+        "description": "Product features for Lunar",
+        "active": true
+    },
+    {
+        "name": "ProductOptions",
+        "repo": "xtend-laravel/feature-lunar-product-options",
+        "namespace": "Xtend\\Lunar\\ProductOptions",
+        "description": "Product options for Lunar",
+        "active": true
+    },
+    {
+        "name": "SidebarMenu",
+        "repo": "xtend-laravel/feature-lunar-sidebar-menu",
+        "namespace": "Xtend\\Lunar\\SidebarMenu",
+        "description": "Sidebar menu for Lunar",
+        "active": true
+    },
+    {
+        "name": "Timeline",
+        "repo": "xtend-laravel/feature-lunar-timeline",
+        "namespace": "Xtend\\Lunar\\Timeline",
+        "description": "Timeline for Lunar",
+        "active": true
+    },
+    {
+        "name": "ManageCarts",
+        "repo": "xtend-laravel/feature-lunar-manage-carts",
+        "namespace": "Xtend\\Lunar\\ManageCarts",
+        "description": "Manage carts for Lunar",
+        "active": true
+    }
+]
