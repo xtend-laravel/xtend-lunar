@@ -61,6 +61,7 @@ class SetStaffAuthMiddlewareListener
             'hub.pages',
             'hub.components',
             'lunar',
+            'slots',
         ]);
     }
 

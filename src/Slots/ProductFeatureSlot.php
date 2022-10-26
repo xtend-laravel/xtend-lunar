@@ -18,7 +18,7 @@ class ProductFeatureSlot extends Component implements AbstractSlot, HasForms
     use HubSlot;
     use InteractsWithForms;
 
-    protected array $features = [];
+    public array $features = [];
 
     protected $rules = [
         'features' => 'required|array',
@@ -27,17 +27,17 @@ class ProductFeatureSlot extends Component implements AbstractSlot, HasForms
     public function mount()
     {
         /** @var ProductFeatureValue $feature */
-        foreach ($this->getSlotModel->featureValues ?? [] as $feature) {
+        foreach ($this->slotModel->featureValues ?? [] as $featureValue) {
             $this->features[] = [
-                'feature' => $feature->id,
-                'feature_value' => $feature->product_feature_id,
+                'feature' => $featureValue->product_feature_id,
+                'feature_value' => $featureValue->id,
             ];
         }
     }
 
     public static function getName()
     {
-        return 'hub.products.slots.product-feature-slot';
+        return 'hub.components.products.slots.product-feature-slot';
     }
 
     public function getSlotHandle()
@@ -62,36 +62,42 @@ class ProductFeatureSlot extends Component implements AbstractSlot, HasForms
 
     public function updateSlotModel()
     {
+        $this->validate();
+
+        /** @var \Xtend\Extensions\Lunar\Core\Models\Product $model */
+        $model = $this->slotModel;
+        $model->featureValues()->sync(collect($this->features)->pluck('feature_value'));
     }
 
     public function handleSlotSave($model, $data)
     {
-        dd($data);
+        //dd($data);
     }
 
     protected function getFormSchema(): array
     {
         return [
             Repeater::make('features')
-                    ->schema([
-                        Select::make('feature')
-                              ->options(ProductFeature::all()->mapWithKeys(fn(ProductFeature $feature) => [$feature->id => $feature->translate('name')]))
-                              ->reactive()
-                              ->dehydrated(false)
-                              ->required(),
-                        Select::make('feature_value')
-                              ->options(function (Closure $get) {
-                                  $feature = ProductFeature::find($get('feature'));
-                                  if ($feature && $feature->values) {
-                                      return $feature->values->mapWithKeys(fn(ProductFeatureValue $feature) => [$feature->id => $feature->translate('name')]);
-                                  }
-
-                                  return [];
-                              })
-                              ->required(),
-                    ])
-                    ->columns(2)
-            // ...
+                ->disableItemMovement()
+                ->disableLabel()
+                ->schema([
+                    Select::make('feature')
+                        ->options(ProductFeature::all()->mapWithKeys(fn (ProductFeature $feature) => [$feature->id => $feature->translate('name')]))
+                        ->reactive()
+                        ->dehydrated(false)
+                        ->required(),
+                    Select::make('feature_value')
+                        ->disabled(fn (Closure $get) => ! $get('feature'))
+                        ->options(function (Closure $get) {
+                            $feature = ProductFeature::find($get('feature'));
+                            if ($feature && $feature->values) {
+                                return $feature->values->mapWithKeys(fn (ProductFeatureValue $feature) => [$feature->id => $feature->translate('name')]);
+                            }
+                            return [];
+                        })
+                        ->required(),
+                ])
+                ->columns(),
         ];
     }
 

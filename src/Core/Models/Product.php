@@ -76,6 +76,11 @@ class Product extends \Lunar\Models\Product
 
     public function featureValues(): BelongsToMany
     {
-        return $this->belongsToMany(ProductFeatureValue::class, 'lunar_product_feature_value_product', 'lunar_product_id', 'lunar_product_feature_value_id');
+        return $this->belongsToMany(
+            related: ProductFeatureValue::class,
+            table: 'lunar_product_feature_value_product',
+            foreignPivotKey: 'lunar_product_id',
+            relatedPivotKey: 'lunar_product_feature_value_id',
+        )->withTimestamps();
     }
 }

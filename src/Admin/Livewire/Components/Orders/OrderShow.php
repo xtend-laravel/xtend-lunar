@@ -15,7 +15,7 @@ class OrderShow extends LunarOrderShow
      * @var bool
      */
     public bool $showDiscount = false;
-    
+
     /**
      * The instance of the shipping address.
      *
