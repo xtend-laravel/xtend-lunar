@@ -25,6 +25,7 @@ use Xtend\Extensions\Lunar\Core\PaymentTypes\Paypal;
 use Xtend\Extensions\Lunar\Core\PaymentTypes\Payzen;
 use Xtend\Extensions\Lunar\Core\ShippingModifiers\FreeShipping;
 use Xtend\Extensions\Lunar\Core\ShippingModifiers\UpsShippingModifier;
+use Xtend\Extensions\Lunar\Slots\ProductFeatureSlot;
 use Xtend\Extensions\Lunar\Slots\SeoSlot;
 use Xtend\Extensions\Lunar\Slots\ShippingSlot;
 
@@ -86,6 +87,7 @@ class XtendLunar extends ExtendsProvider
         //Slot::register('order.show', ShippingSlot::class);
 
         Livewire::component('hub.products.slots.seo-slot', SeoSlot::class);
+        Livewire::component('hub.products.slots.product-feature-slot', ProductFeatureSlot::class);
         Livewire::component('hub.orders.slots.shipping-slot', ShippingSlot::class);
     }
 

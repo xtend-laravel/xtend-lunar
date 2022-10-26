@@ -4,6 +4,7 @@ namespace Xtend\Extensions\Lunar\Core\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Lunar\Base\Casts\AsAttributeData;
 use Lunar\Models\Collection;
 use Lunar\Models\CollectionGroup;
@@ -71,5 +72,10 @@ class Product extends \Lunar\Models\Product
     public function baseVariant()
     {
         return $this->hasOne(ProductVariant::class);
+    }
+
+    public function featureValues(): BelongsToMany
+    {
+        return $this->belongsToMany(ProductFeatureValue::class, 'lunar_product_feature_value_product', 'lunar_product_id', 'lunar_product_feature_value_id');
     }
 }
