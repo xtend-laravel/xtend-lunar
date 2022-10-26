@@ -40,10 +40,6 @@ Route::group([
         ], __DIR__.'/includes/products.php');
 
         Route::group([
-            'prefix' => 'product-features',
-        ], __DIR__.'/includes/product-features.php');
-
-        Route::group([
             'prefix' => 'product-options',
         ], __DIR__.'/includes/product-options.php');
 

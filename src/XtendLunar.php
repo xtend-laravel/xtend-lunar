@@ -84,11 +84,7 @@ class XtendLunar extends ExtendsProvider
 
     protected function bootWithSlots(): void
     {
-        Slot::register('product.show', ProductFeatureSlot::class);
-        //Slot::register('order.show', ShippingSlot::class);
-
         Livewire::component('hub.products.slots.seo-slot', SeoSlot::class);
-        Livewire::component('hub.components.products.slots.product-feature-slot', ProductFeatureSlot::class);
         Livewire::component('hub.orders.slots.shipping-slot', ShippingSlot::class);
     }
 

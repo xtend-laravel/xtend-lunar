@@ -12,11 +12,8 @@ use Lunar\Hub\AdminHubServiceProvider as AdminHubBaseServiceProvider;
 use Lunar\Hub\Menu\OrderActionsMenu;
 use Lunar\Hub\Menu\SettingsMenu;
 use Xtend\Extensions\Lunar\Admin\Listeners\SetStaffAuthMiddlewareListener;
-use Xtend\Extensions\Lunar\Admin\Livewire\Components\Carts\CartsIndex;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Forms\ChannelForm;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Forms\CustomerDetailForm;
-use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\Activity\CommentNotification;
-use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\EmailNotification;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderAddress;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderDiscount;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderShow;
@@ -27,9 +24,7 @@ use Xtend\Extensions\Lunar\Admin\Livewire\Components\Products\ProductCreate;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Products\ProductShow;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProfileForm;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\SwitchLanguage;
-use Xtend\Extensions\Lunar\Admin\Livewire\Components\Timeline;
 use Xtend\Extensions\Lunar\Admin\Livewire\Dashboard;
-use Xtend\Extensions\Lunar\Admin\Livewire\Pages\ProductFeatures\FeaturesIndex;
 use Xtend\Extensions\Lunar\Admin\Livewire\Pages\ProductOptions\ProductOptionsIndex;
 use Xtend\Extensions\Lunar\Admin\Menu\SidebarMenu;
 
@@ -85,9 +80,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         Livewire::component('hub.pages.product-options.product-options-index', ProductOptionsIndex::class);
         Livewire::component('hub.components.product-options.edit', OptionEdit::class);
         Livewire::component('hub.components.product-options.value-edit', OptionValueEdit::class);
-
-        Livewire::component('hub.pages.product-features.features-index', FeaturesIndex::class);
-        Livewire::component('hub.components.product-features.edit', ProductFeatureEdit::class);
     }
 
     protected function registerOrderComponents(): void

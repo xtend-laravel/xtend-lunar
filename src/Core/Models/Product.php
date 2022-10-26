@@ -9,6 +9,7 @@ use Lunar\Base\Casts\AsAttributeData;
 use Lunar\Models\Collection;
 use Lunar\Models\CollectionGroup;
 use Lunar\Models\ProductVariant;
+use XtendLunar\Features\ProductFeatures\Models\ProductFeatureValue;
 
 class Product extends \Lunar\Models\Product
 {
@@ -76,6 +77,7 @@ class Product extends \Lunar\Models\Product
 
     public function featureValues(): BelongsToMany
     {
+        // @todo - this is a hack to get the feature values to work best to move this into a trait on the product-feature package
         return $this->belongsToMany(
             related: ProductFeatureValue::class,
             table: 'lunar_product_feature_value_product',
