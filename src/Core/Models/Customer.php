@@ -2,19 +2,18 @@
 
 namespace Xtend\Extensions\Lunar\Core\Models;
 
-use Filament\Notifications\Actions\Action;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
 use Lunar\Base\Casts\AsAttributeData;
 use Lunar\Base\Traits\LogsActivity;
 use Lunar\Models\Language;
-use Xtend\Extensions\Filament\Notifications\Notification;
+use XtendLunar\Features\NotifyTimeline\Concerns\HasModelNotification;
 
 class Customer extends \Lunar\Models\Customer
 {
+    use HasModelNotification;
     use LogsActivity;
     use SoftDeletes;
     use Notifiable;
@@ -32,20 +31,7 @@ class Customer extends \Lunar\Models\Customer
     protected static function booted(): void
     {
         static::created(function (self $customer) {
-            $customer->notify(
-                Notification::make()
-                    ->success()
-                    ->system()
-                    ->id(Str::random())
-                    ->title('New customer registered successfully!')
-                    ->body('System detected new customer registration named **'.$customer->fullName.'**.')
-                    ->actions([
-                        Action::make('view')
-                              ->button()
-                              ->url(route('hub.customers.show', ['customer' => $customer])),
-                    ])
-                    ->toDatabase()
-            );
+            $customer->notify($this->customerNotification($customer));
         });
     }
 

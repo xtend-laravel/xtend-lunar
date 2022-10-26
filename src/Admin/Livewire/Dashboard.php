@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use Lunar\Models\Customer;
 use Lunar\Models\CustomerGroup;
 use Lunar\Models\Order;
-use Xtend\Extensions\Filament\Notifications\Notification;
+use XtendLunar\Features\NotifyTimeline\Base\Notification;
 
 class Dashboard extends \Lunar\Hub\Http\Livewire\Dashboard
 {

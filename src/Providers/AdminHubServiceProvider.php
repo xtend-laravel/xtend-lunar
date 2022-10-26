@@ -64,7 +64,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 
         Livewire::component('dashboard', Dashboard::class);
         Livewire::component('hub.components.switch-language', SwitchLanguage::class);
-        Livewire::component('hub.components.timeline', Timeline::class);
 
         // Livewire Form Components
         $this->registerFormComponents();
@@ -99,8 +98,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         Livewire::component('hub.components.orders.discount', OrderDiscount::class);
         Livewire::component('hub.components.orders.show', OrderShow::class);
         Livewire::component('hub.components.orders.address', OrderAddress::class);
-        Livewire::component('hub.components.orders.activity.comment-notification', CommentNotification::class);
-        Livewire::component('hub.components.orders.email-notification', EmailNotification::class);
     }
 
     protected function registerFormComponents(): void
