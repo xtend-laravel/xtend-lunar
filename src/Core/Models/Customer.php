@@ -4,10 +4,12 @@ namespace Xtend\Extensions\Lunar\Core\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Lunar\Base\Casts\AsAttributeData;
 use Lunar\Base\Traits\LogsActivity;
+use Lunar\Models\Cart;
 use Lunar\Models\Language;
 use XtendLunar\Features\NotifyTimeline\Concerns\HasModelNotification;
 
@@ -43,5 +45,15 @@ class Customer extends \Lunar\Models\Customer
     public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class);
+    }
+
+    /**
+     * Return the cart's relationship.
+     *
+     * @return BelongsTo
+     */
+    public function carts(): HasMany
+    {
+        return $this->hasMany(Cart::class);
     }
 }

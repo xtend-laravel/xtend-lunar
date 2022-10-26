@@ -93,8 +93,7 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
     protected function registerOrderComponents(): void
     {
         parent::registerOrderComponents();
-
-        Livewire::component('hub.components.carts.index', CartsIndex::class);
+        
         Livewire::component('hub.components.orders.discount', OrderDiscount::class);
         Livewire::component('hub.components.orders.show', OrderShow::class);
         Livewire::component('hub.components.orders.address', OrderAddress::class);

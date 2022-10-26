@@ -122,6 +122,7 @@ class SidebarMenu
                  ->icon('cash');
         });
 
+        // @todo This will need to later be moved to the ManageCart feature package. (Will have to introduce menu slot positions)
         $orders->addItem(function ($item) {
             $item->name(
                 __('adminhub::menu.sidebar.carts')

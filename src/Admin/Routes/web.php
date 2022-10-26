@@ -55,10 +55,6 @@ Route::group([
             'prefix' => 'orders',
         ], __DIR__.'/includes/orders.php');
 
-        Route::group([
-            'prefix' => 'carts',
-        ], __DIR__.'/includes/carts.php');
-
         Route::group([], __DIR__.'/includes/collections.php');
 
         Route::group([

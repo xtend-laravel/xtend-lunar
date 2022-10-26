@@ -13,7 +13,8 @@
         "php": "^8.1",
         "illuminate/contracts": "^9.0",
         "xtend-laravel/feature-lunar-form-builder": "*",
-        "xtend-laravel/feature-lunar-notify-timeline": "*"
+        "xtend-laravel/feature-lunar-notify-timeline": "*",
+        "xtend-laravel/feature-lunar-manage-carts": "*"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
