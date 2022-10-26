@@ -10,6 +10,13 @@ use Lunar\Models\OrderAddress;
 class OrderShow extends LunarOrderShow
 {
     /**
+     * Whether to show the discount panel.
+     *
+     * @var bool
+     */
+    public bool $showDiscount = false;
+    
+    /**
      * The instance of the shipping address.
      *
      * @var \Lunar\Models\OrderAddress
@@ -114,5 +121,15 @@ class OrderShow extends LunarOrderShow
         return $this->order->customer->addresses->mapWithKeys(function (Addressable $address) {
             return [$address->id => $address->formatted];
         });
+    }
+
+    /**
+     * Handle when a discount is successful.
+     *
+     * @return void
+     */
+    public function discountSuccess()
+    {
+        $this->showDiscount = false;
     }
 }
