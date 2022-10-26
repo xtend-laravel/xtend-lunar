@@ -30,9 +30,16 @@
                 @if ($this->transactions->count())
                     <x-hub::input.checkbox value="{{ $line->id }}" wire:model="selectedLines" />
                 @endif
-                <div class="flex-shrink-0 overflow-hidden rounded border border-gray-100 p-1">
-                    <img class="h-24 w-24 object-contain"
-                        src="{{ $line->purchasable?->product?->thumbnail?->getUrl() }}" />
+                <div class="flex-shrink-0 items-center overflow-hidden rounded border border-gray-100 p-1">
+                @if($thumbnail = $line->purchasable->getThumbnail())
+                    <img
+                        class="object-contain h-32 w-32"
+                        src="{{ $thumbnail->getUrl('small') }}"
+                      />
+                    @else
+                        <x-hub::icon ref="photograph"
+                         class="w-20 h-20 lt-text-gray-300 flex items-center m-auto" />
+                    @endif
                 </div>
             </div>
 
