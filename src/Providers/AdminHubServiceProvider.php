@@ -4,13 +4,17 @@ namespace Xtend\Extensions\Lunar\Providers;
 
 use CodeLabX\XtendLaravel\Services\Translation\FileLoader;
 use CodeLabX\XtendLaravel\Services\Translation\TranslationServiceProvider;
+use Illuminate\Foundation\Events\LocaleUpdated;
 use Illuminate\Routing\Events\RouteMatched;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\View;
 use Livewire\Livewire;
 use Lunar\Hub\AdminHubServiceProvider as AdminHubBaseServiceProvider;
 use Lunar\Hub\Menu\OrderActionsMenu;
 use Lunar\Hub\Menu\SettingsMenu;
+use Lunar\Models\Language;
 use Xtend\Extensions\Lunar\Admin\Listeners\SetStaffAuthMiddlewareListener;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Forms\ChannelForm;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Forms\CustomerDetailForm;
@@ -32,6 +36,8 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 {
     public function register(): void
     {
+        parent::register();
+
         collect($this->configFiles)->each(function ($config) {
             $path = __DIR__.'/../Config/lunar-hub/'.$config.'.php';
             $this->mergeConfigFrom($path, 'lunar-hub.'.$config);
@@ -49,8 +55,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         });
 
         $this->loadRoutesFrom(__DIR__.'/../Admin/Routes/web.php');
-
-        parent::register();
     }
 
     protected function registerLivewireComponents(): void
@@ -148,9 +152,11 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 
     protected function registerMenuBuilder(): void
     {
-        SidebarMenu::make();
-        SettingsMenu::make();
-        OrderActionsMenu::make();
+        Event::listen(LocaleUpdated::class, function () {
+            SidebarMenu::make();
+            SettingsMenu::make();
+            OrderActionsMenu::make();
+        });
     }
 
     public function boot()

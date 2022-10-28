@@ -23,9 +23,11 @@ class SwitchLanguage extends Component
         $this->locale = $locale;
 
         $lang = Language::where('code', $locale)->first();
-        tap(Auth::guard('staff')->user())->update([
-            'language_id' => $lang->id,
-        ]);
+        app()->setLocale($lang->code);
+
+        // tap(Auth::guard('staff')->user())->update([
+        //     'language_id' => $lang->id,
+        // ]);
 
         return redirect()->to(route('hub.index'));
     }
