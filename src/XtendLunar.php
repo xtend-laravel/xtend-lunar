@@ -96,9 +96,9 @@ class XtendLunar extends ExtendsProvider
 
     protected function bootWithShippingModifiers(): void
     {
-        $shippingModifiers = resolve(ShippingModifiers::class);
-        $shippingModifiers->add(FreeShipping::class);
-        $shippingModifiers->add(UpsShippingModifier::class);
+        // $shippingModifiers = resolve(ShippingModifiers::class);
+        // $shippingModifiers->add(FreeShipping::class);
+        // $shippingModifiers->add(UpsShippingModifier::class);
     }
 
     protected function bootWithEvents(): void
