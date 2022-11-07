@@ -33,7 +33,7 @@ class Customer extends \Lunar\Models\Customer
     protected static function booted(): void
     {
         static::created(function (self $customer) {
-            $customer->notify($this->customerNotification($customer));
+            $customer->notify(static::customerNotification($customer));
         });
     }
 

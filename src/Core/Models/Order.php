@@ -39,7 +39,7 @@ class Order extends \Lunar\Models\Order
     protected static function booted(): void
     {
         static::created(function (self $order) {
-            $order->notify($this->orderNotification($order));
+            $order->notify(static::orderNotification($order));
         });
     }
 
