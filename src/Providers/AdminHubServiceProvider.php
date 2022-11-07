@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\View;
 use Livewire\Livewire;
 use Lunar\Hub\AdminHubServiceProvider as AdminHubBaseServiceProvider;
+use Xtend\Extensions\Lunar\Admin\Livewire\Components\Customers\CustomerShow;
 use Lunar\Hub\Menu\OrderActionsMenu;
 use Lunar\Hub\Menu\SettingsMenu;
 use Lunar\Models\Language;
@@ -93,6 +94,13 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         Livewire::component('hub.components.orders.discount', OrderDiscount::class);
         Livewire::component('hub.components.orders.show', OrderShow::class);
         Livewire::component('hub.components.orders.address', OrderAddress::class);
+    }
+
+    protected function registerCustomerComponents()
+    {
+        parent::registerCustomerComponents();
+
+        Livewire::component('hub.components.customers.show', CustomerShow::class);
     }
 
     protected function registerFormComponents(): void
