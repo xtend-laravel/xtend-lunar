@@ -24,6 +24,9 @@ use Lunar\Hub\Http\Livewire\Pages\Settings\Taxes\TaxClassesIndex;
 use Lunar\Hub\Http\Livewire\Pages\Settings\Taxes\TaxZoneCreate;
 use Lunar\Hub\Http\Livewire\Pages\Settings\Taxes\TaxZoneShow;
 use Lunar\Hub\Http\Livewire\Pages\Settings\Taxes\TaxZonesIndex;
+use Xtend\Extensions\Lunar\Admin\Livewire\Pages\Settings\Shippings\ShippingLocationsIndex;
+use Xtend\Extensions\Lunar\Admin\Livewire\Pages\Settings\Shippings\ShippingOptionsIndex;
+use Xtend\Extensions\Lunar\Admin\Livewire\Pages\Settings\Shippings\ShippingZonesIndex;
 
 Route::get('/', function () {
     return redirect()->route('hub.attributes.index');
@@ -122,4 +125,16 @@ Route::group([
     Route::get('/tax-zones/create', TaxZoneCreate::class)->name('hub.taxes.create');
     Route::get('/tax-zones/{taxZone}', TaxZoneShow::class)->name('hub.taxes.show');
     Route::get('/tax-classes', TaxClassesIndex::class)->name('hub.taxes.tax-classes.index');
+});
+
+/**
+ * Shippings.
+ */
+Route::group([
+    'middleware' => 'can:settings:core',
+    'prefix' => 'shippings',
+], function () {
+    Route::get('/shipping-zones', ShippingZonesIndex::class)->name('hub.shippings.shipping-zones.index');
+    Route::get('/shipping-locations', ShippingLocationsIndex::class)->name('hub.shippings.shipping-locations.index');
+    Route::get('/shipping-options', ShippingOptionsIndex::class)->name('hub.shippings.shipping-options.index');
 });
