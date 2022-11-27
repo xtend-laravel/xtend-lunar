@@ -12,6 +12,13 @@ class ShippingOption extends BaseModel
      */
     protected $guarded = [];
 
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'data' => 'array',
+    ];
+
     public function zone(): BelongsTo
     {
         return $this->belongsTo(ShippingZone::class);

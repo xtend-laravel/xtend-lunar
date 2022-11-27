@@ -26,7 +26,7 @@ class ListShippingOptions extends Component implements Tables\Contracts\HasTable
             Tables\Columns\TextColumn::make('identifier')
                 ->sortable()
                 ->searchable(),
-            Tables\Columns\TextColumn::make('type')
+            Tables\Columns\TextColumn::make('wsCode')
                 ->sortable()
                 ->searchable(),
             Tables\Columns\IconColumn::make('is_enabled')
