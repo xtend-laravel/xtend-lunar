@@ -67,7 +67,7 @@
 
         <div class="p-6">
             <div wire:sort sort.options='{group: "images", method: "sort"}'
-                class="relative mt-4 flex gap-x-8 space-y-2">
+                class="relative mt-4 flex gap-x-8 space-y-2 grid grid-cols-3">
                 @foreach ($this->images as $image)
                     <div class="flex items-center justify-between rounded-md border bg-white p-4 shadow-sm"
                         sort.item="images" sort.id="{{ $image['sort_key'] }}"
