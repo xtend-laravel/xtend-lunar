@@ -18,7 +18,7 @@ class SettingsMenu extends LunarSettingsMenu
         );
 
         $storeSection->addItem(function ($item) {
-            $item->name('Shippings')
+            $item->name('Shipping')
                  ->handle('hub.shippings')
                  ->route('hub.shippings.shipping-zones.index')
 //                 ->gate('settings:manage-shippings')
