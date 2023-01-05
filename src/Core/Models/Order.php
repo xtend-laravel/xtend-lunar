@@ -2,13 +2,10 @@
 
 namespace Xtend\Extensions\Lunar\Core\Models;
 
-use Filament\Notifications\Actions\Action;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
 use Lunar\Base\Casts\Price;
 use Lunar\Base\Casts\TaxBreakdown;
-use XtendLunar\Features\NotifyTimeline\Base\Notification;
 use XtendLunar\Features\NotifyTimeline\Concerns\HasModelNotification;
 
 /**

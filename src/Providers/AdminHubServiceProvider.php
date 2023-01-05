@@ -6,31 +6,30 @@ use CodeLabX\XtendLaravel\Services\Translation\FileLoader;
 use CodeLabX\XtendLaravel\Services\Translation\TranslationServiceProvider;
 use Illuminate\Foundation\Events\LocaleUpdated;
 use Illuminate\Routing\Events\RouteMatched;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\View;
 use Livewire\Livewire;
 use Lunar\Hub\AdminHubServiceProvider as AdminHubBaseServiceProvider;
-use Xtend\Extensions\Lunar\Admin\Livewire\Components\Customers\CustomerShow;
 use Lunar\Hub\Menu\OrderActionsMenu;
-use Lunar\Hub\Menu\SettingsMenu;
-use Lunar\Models\Language;
 use Xtend\Extensions\Lunar\Admin\Listeners\SetStaffAuthMiddlewareListener;
+use Xtend\Extensions\Lunar\Admin\Livewire\Components\Customers\CustomerShow;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Forms\ChannelForm;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Forms\CustomerDetailForm;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderAddress;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderDiscount;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderShow;
-use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProductFeatures\ProductFeatureEdit;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProductOptions\OptionEdit;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProductOptions\OptionValueEdit;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Products\ProductCreate;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Products\ProductShow;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProfileForm;
+use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Shippings\Tables\ListShippingLocations;
+use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Shippings\Tables\ListShippingOptions;
+use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Shippings\Tables\ListShippingZones;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\SwitchLanguage;
 use Xtend\Extensions\Lunar\Admin\Livewire\Dashboard;
 use Xtend\Extensions\Lunar\Admin\Livewire\Pages\ProductOptions\ProductOptionsIndex;
+use Xtend\Extensions\Lunar\Admin\Menu\SettingsMenu;
 use Xtend\Extensions\Lunar\Admin\Menu\SidebarMenu;
 
 class AdminHubServiceProvider extends AdminHubBaseServiceProvider
@@ -108,6 +107,15 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         Livewire::component('hub.components.forms.channel-form', ChannelForm::class);
         Livewire::component('hub.components.forms.customer-detail-form', CustomerDetailForm::class);
         Livewire::component('hub.components.forms.profile-form', ProfileForm::class);
+    }
+
+    protected function registerSettingsComponents(): void
+    {
+        parent::registerSettingsComponents();
+
+        Livewire::component('hub.components.settings.shippings.tables.list-shipping-zones', ListShippingZones::class);
+        Livewire::component('hub.components.settings.shippings.tables.list-shipping-locations', ListShippingLocations::class);
+        Livewire::component('hub.components.settings.shippings.tables.list-shipping-options', ListShippingOptions::class);
     }
 
     /**

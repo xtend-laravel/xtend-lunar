@@ -1,4 +1,5 @@
 features
 features.json
 /vendor
+/.idea
 .DS_Store

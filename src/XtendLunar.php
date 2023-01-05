@@ -10,7 +10,6 @@ use Livewire\Livewire;
 use Lunar\Base\ShippingModifiers;
 use Lunar\Facades\ModelManifest;
 use Lunar\Facades\Payments;
-use Lunar\Hub\Facades\Slot;
 use Lunar\Models\Address;
 use Lunar\Models\Brand;
 use Lunar\Models\Cart;
@@ -26,7 +25,6 @@ use Xtend\Extensions\Lunar\Core\PaymentTypes\Paypal;
 use Xtend\Extensions\Lunar\Core\PaymentTypes\Payzen;
 use Xtend\Extensions\Lunar\Core\ShippingModifiers\FreeShipping;
 use Xtend\Extensions\Lunar\Core\ShippingModifiers\UpsShippingModifier;
-use Xtend\Extensions\Lunar\Slots\ProductFeatureSlot;
 use Xtend\Extensions\Lunar\Slots\SeoSlot;
 use Xtend\Extensions\Lunar\Slots\ShippingSlot;
 
