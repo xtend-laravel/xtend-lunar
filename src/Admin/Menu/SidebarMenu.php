@@ -5,7 +5,7 @@ namespace Xtend\Extensions\Lunar\Admin\Menu;
 use Lunar\Hub\Facades\Menu;
 use Lunar\Hub\Menu\MenuSlot;
 
-class SidebarMenu
+class SidebarMenu extends \Lunar\Hub\Menu\SidebarMenu
 {
     protected MenuSlot $slot;
 
@@ -137,6 +137,14 @@ class SidebarMenu
             )->handle('hub.customers')
                  ->route('hub.customers.index')
                  ->icon('users');
+        });
+
+        $orders->addItem(function ($menuItem) {
+            $menuItem
+                ->name(__('adminhub::menu.sidebar.discounts'))
+                ->handle('hub.discounts')
+                ->route('hub.discounts.index')
+                ->icon('ticket');
         });
     }
 }
