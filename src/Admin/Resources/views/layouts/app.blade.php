@@ -13,6 +13,9 @@
 
     @livewireTableStyles
 
+    <link href="{{ asset('vendor/lunar/admin-hub/app.css?v=1') }}"
+          rel="stylesheet">
+
     @if ($viteSupport ?? false)
         @vite($vite ?? [])
     @endif

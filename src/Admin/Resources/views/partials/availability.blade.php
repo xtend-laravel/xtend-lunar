@@ -49,7 +49,9 @@
                             </div>
                         </header>
                         <div class="divide mt-4 divide-y">
-                            @include('adminhub::partials.availability.customer-groups')
+                            @include('adminhub::partials.availability.customer-groups', [
+                                'customerGroupType' => $customerGroupType ?? 'select',
+                            ])
                         </div>
                     </div>
                 @endif
