@@ -29,6 +29,7 @@ use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Shippings\Tables\L
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\SwitchLanguage;
 use Xtend\Extensions\Lunar\Admin\Livewire\Dashboard;
 use Xtend\Extensions\Lunar\Admin\Livewire\Pages\ProductOptions\ProductOptionsIndex;
+use Xtend\Extensions\Lunar\Admin\Livewire\Sidebar;
 use Xtend\Extensions\Lunar\Admin\Menu\SettingsMenu;
 use Xtend\Extensions\Lunar\Admin\Menu\SidebarMenu;
 
@@ -61,6 +62,7 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
     {
         parent::registerLivewireComponents();
 
+        Livewire::component('sidebar', Sidebar::class);
         Livewire::component('dashboard', Dashboard::class);
         Livewire::component('hub.components.switch-language', SwitchLanguage::class);
 
