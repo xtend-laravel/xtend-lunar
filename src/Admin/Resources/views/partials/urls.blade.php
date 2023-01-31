@@ -12,18 +12,21 @@
         @endif
 
         <div class="space-y-4 p-6">
-            <div>
-                <div class="flex items-center space-x-4 text-sm font-medium text-gray-700">
-                    <div class="w-64">{{ __('adminhub::global.language') }}</div>
-                    <div class="w-full">{{ __('adminhub::global.slug') }}</div>
-                    <div class="w-32">{{ __('adminhub::global.default') }}</div>
+            @if (count($urls))
+                <div>
+                    <div class="flex items-center space-x-4 text-sm font-medium text-gray-700">
+                        <div class="w-64">{{ __('adminhub::global.language') }}</div>
+                        <div class="w-full">{{ __('adminhub::global.slug') }}</div>
+                        <div class="w-32">{{ __('adminhub::global.default') }}</div>
+                    </div>
                 </div>
-            </div>
-            @foreach ($urls as $url)
+            @endif
+
+            @foreach ($urls as $index => $url)
                 <div wire:key="url_{{ $url['key'] }}">
-                    <div class="flex items-center space-x-4" wire:key="url_{{ $loop->index }}">
+                    <div class="flex items-center space-x-4">
                         <div class="w-64">
-                            <x-hub::input.select wire:model="urls.{{ $loop->index }}.language_id">
+                            <x-hub::input.select wire:model.defer="urls.{{ $index }}.language_id">
                                 @foreach ($this->languages as $lang)
                                     <option value="{{ $lang['id'] }}">{{ $lang['name'] }}</option>
                                 @endforeach
@@ -31,13 +34,13 @@
                         </div>
 
                         <div class="w-full">
-                            <x-hub::input.text wire:model.lazy="urls.{{ $loop->index }}.slug" />
+                            <x-hub::input.text wire:model.defer="urls.{{ $index }}.slug" />
                         </div>
 
-                        <div class="flex w-32 items-center space-x-4">
-                            <x-hub::input.toggle wire:model="urls.{{ $loop->index }}.default" />
+                        <div class="flex items-center w-32 space-x-4">
+                            <x-hub::input.toggle wire:model.defer="urls.{{ $index }}.default" />
 
-                            <button class="text-gray-400" wire:click.prevent="removeUrl('{{ $loop->index }}')">
+                            <button class="text-gray-400" wire:click.prevent="removeUrl('{{ $index }}')">
                                 <x-hub::icon ref="trash" style="solid" />
                             </button>
                         </div>

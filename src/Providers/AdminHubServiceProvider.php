@@ -49,6 +49,12 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 
         // Overrides hub translations
         $this->app->register(TranslationServiceProvider::class);
+
+        // $this->app->singleton('translation.loader', function ($app) {
+        //     return new \Migrator\Translation\FileLoader($app['files'], $app['path.lang']);
+        // });
+
+        // @todo Need to find a way to override hub translations for now merge laravel validation translations
         $this->app->singleton('translation.loader', function ($app) {
             $app['path.lang'] = __DIR__.'/../Admin/Resources/lang';
 
