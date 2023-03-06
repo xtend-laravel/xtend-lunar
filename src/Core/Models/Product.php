@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Lunar\Base\Casts\AsAttributeData;
 use Lunar\Models\Collection;
 use Lunar\Models\CollectionGroup;
+use Lunar\Models\Price;
 use Lunar\Models\ProductVariant;
 use XtendLunar\Features\ProductFeatures\Models\ProductFeatureValue;
 
@@ -73,6 +74,15 @@ class Product extends \Lunar\Models\Product
     public function baseVariant()
     {
         return $this->hasOne(ProductVariant::class);
+    }
+
+    /**
+     * Return the product base price relation.
+     *
+     */
+    public function basePrice()
+    {
+        return $this->hasOne(Price::class, 'id', 'price_default_id');
     }
 
     public function featureValues(): BelongsToMany
