@@ -22,6 +22,7 @@ class WidgetSlot extends Model
             table: 'xtend_builder_widget_slot_item',
             foreignPivotKey: 'widget_slot_id',
             relatedPivotKey: 'widget_id',
+            parentKey: 'id',
         );
     }
 }
