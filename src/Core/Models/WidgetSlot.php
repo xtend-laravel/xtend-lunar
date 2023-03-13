@@ -11,4 +11,9 @@ class WidgetSlot extends Model
     protected $casts = [
         'params' => 'array',
     ];
+
+    public function getRouteKeyName(): string
+    {
+        return 'identifier';
+    }
 }
