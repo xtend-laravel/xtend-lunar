@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Lunar\Base\Casts\AsAttributeData;
-use Lunar\Models\Collection;
 use Lunar\Models\CollectionGroup;
 use Lunar\Models\Price;
 use Lunar\Models\ProductVariant;
