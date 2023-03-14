@@ -6,5 +6,5 @@ enum WidgetType
 {
     case Advertisement;
     case Content;
-    case Products;
+    case Collection;
 }
