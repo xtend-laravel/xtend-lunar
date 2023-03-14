@@ -9,8 +9,6 @@ class WidgetSlot extends Model
 {
     protected $table = 'xtend_builder_widget_slots';
 
-    protected $primaryKey = 'identifier';
-
     protected $casts = [
         'params' => 'array',
     ];
@@ -22,7 +20,6 @@ class WidgetSlot extends Model
             table: 'xtend_builder_widget_slot_item',
             foreignPivotKey: 'widget_slot_id',
             relatedPivotKey: 'widget_id',
-            parentKey: 'id',
         );
     }
 }
