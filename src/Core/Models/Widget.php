@@ -11,6 +11,7 @@ class Widget extends Model
 
     protected $casts = [
         'data' => 'array',
+        'params' => 'array',
     ];
 
     public function slots(): BelongsToMany
