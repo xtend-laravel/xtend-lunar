@@ -25,6 +25,8 @@ use Xtend\Extensions\Lunar\Core\PaymentTypes\Paypal;
 use Xtend\Extensions\Lunar\Core\PaymentTypes\Payzen;
 use Xtend\Extensions\Lunar\Core\ShippingModifiers\FreeShipping;
 use Xtend\Extensions\Lunar\Core\ShippingModifiers\UpsShippingModifier;
+use Xtend\Extensions\Lunar\Providers\AdminHubServiceProvider;
+use Xtend\Extensions\Lunar\Providers\LunarServiceProvider;
 use Xtend\Extensions\Lunar\Slots\SeoSlot;
 use Xtend\Extensions\Lunar\Slots\ShippingSlot;
 
@@ -37,6 +39,10 @@ class XtendLunar extends ExtendsProvider
      */
     public function withRegister(): void
     {
+        // $this->app->register(LivewireTablesServiceProvider::class);
+        $this->app->register(AdminHubServiceProvider::class);
+        // $this->app->register(LunarServiceProvider::class);
+        // $this->loadViewsFrom(__DIR__.'/Admin/Resources/views', 'adminhub');
     }
 
     /**
