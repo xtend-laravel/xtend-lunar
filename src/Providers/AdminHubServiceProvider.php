@@ -48,7 +48,7 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         $this->loadViewsFrom(__DIR__.'/../Admin/Resources/views', 'adminhub');
 
         // Overrides hub translations
-        $this->app->register(TranslationServiceProvider::class);
+        // $this->app->register(TranslationServiceProvider::class);
 
         // $this->app->singleton('translation.loader', function ($app) {
         //     return new \Migrator\Translation\FileLoader($app['files'], $app['path.lang']);
@@ -191,5 +191,11 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
             RouteMatched::class,
             [SetStaffAuthMiddlewareListener::class, 'handle']
         );
+    }
+
+    protected function registerConverters()
+    {
+        // $this->registerExchangers();
+        // $this->registerConverter();
     }
 }
