@@ -4,8 +4,9 @@ namespace Xtend\Extensions\Lunar\Admin\Menu;
 
 use Lunar\Hub\Facades\Menu;
 use Lunar\Hub\Menu\MenuSlot;
+use Lunar\Hub\Menu\SidebarMenu as LunarSidebarMenuMenu;
 
-class SidebarMenu extends \Lunar\Hub\Menu\SidebarMenu
+class SidebarMenu extends LunarSidebarMenuMenu
 {
     protected MenuSlot $slot;
 
@@ -27,15 +28,17 @@ class SidebarMenu extends \Lunar\Hub\Menu\SidebarMenu
      */
     protected function makeTopLevel()
     {
+        /** @var $this Menu slot */
         $this->slot = Menu::slot('sidebar');
 
-        $this->slot->addItem(function ($item) {
-            $item->name(
-                __('adminhub::menu.sidebar.index')
-            )->handle('hub.index')
-            ->route('hub.index')
-            ->icon('chart-square-bar');
-        });
+        // @todo - Perhaps add this back in when removed from the template
+        // $this->slot->addItem(function ($item) {
+        //     $item->name(
+        //         __('adminhub::menu.sidebar.index')
+        //     )->handle('hub.index')
+        //     ->route('hub.index')
+        //     ->icon('chart-square-bar');
+        // });
 
         $this->makeCatalogueSection();
         $this->makeOrdersSection();

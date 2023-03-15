@@ -9,7 +9,7 @@ class SettingsMenu extends LunarSettingsMenu
 {
     protected function makeTopLevel(): static
     {
-        parent::makeTopLevel();
+        // parent::makeTopLevel();
 
         $slot = Menu::slot('settings');
 

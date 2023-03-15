@@ -174,15 +174,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         });
     }
 
-    protected function registerMenuBuilder(): void
-    {
-        Event::listen(LocaleUpdated::class, function () {
-            SidebarMenu::make();
-            SettingsMenu::make();
-            OrderActionsMenu::make();
-        });
-    }
-
     public function boot()
     {
         parent::boot();
@@ -191,6 +182,15 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
             RouteMatched::class,
             [SetStaffAuthMiddlewareListener::class, 'handle']
         );
+    }
+
+    protected function registerMenuBuilder(): void
+    {
+        //Event::listen(LocaleUpdated::class, function () {
+            SidebarMenu::make();
+            SettingsMenu::make();
+            //OrderActionsMenu::make();
+        //});
     }
 
     protected function registerConverters()
