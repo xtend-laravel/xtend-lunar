@@ -2,7 +2,7 @@
     <div class="flex-col space-y-4">
 
         <header class="flex items-center gap-1 rounded-t-xl bg-[#353F4F] p-3">
-            <x-go-image-16 class="h-6 w-6 text-[#CFA55B]" />
+            <x-akar-image class="h-6 w-6 text-[#CFA55B]" />
             <span class="ml-2 text-sm font-semibold text-white">
                 {{ __('adminhub::partials.image-manager.heading') }}
             </span>

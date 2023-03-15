@@ -1,7 +1,7 @@
 <div class="overflow-hidden shadow sm:rounded-md">
     <div class="flex-col space-y-4 bg-white">
         <header class="flex items-center gap-1 rounded-t-xl bg-[#353F4F] p-3">
-            <x-go-info-16 class="h-6 w-6 text-[#CFA55B]" />
+            <x-akar-info class="h-6 w-6 text-[#CFA55B]" />
             <span class="ml-2 text-sm font-semibold text-white">{{ __('adminhub::partials.urls.title') }}</span>
         </header>
 

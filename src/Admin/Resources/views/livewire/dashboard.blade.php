@@ -94,7 +94,7 @@
                 <div class="h-96 rounded-t-xl bg-white">
                     <header class="flex items-center justify-between rounded-t-xl bg-[#353F4F] p-3">
                         <div class="flex items-center gap-x-2">
-                            <x-go-info-16 class="h-6 w-6 text-[#CFA55B]" />
+                            <x-akar-info class="h-6 w-6 text-[#CFA55B]" />
                             <span class="ml-1 text-sm font-semibold text-white">
                                 {{ __('adminhub::catalogue.customer.dashboard.sales_performance') }}
                             </span>
@@ -110,7 +110,7 @@
                 <div class="h-96 rounded-t-xl bg-white">
                     <header class="flex items-center justify-between rounded-t-xl bg-[#353F4F] p-3">
                         <div class="flex items-center gap-x-2">
-                            <x-go-info-16 class="h-6 w-6 text-[#CFA55B]" />
+                            <x-akar-info class="h-6 w-6 text-[#CFA55B]" />
                             <span class="ml-1 text-sm font-semibold text-white">
                                 {{ __('adminhub::catalogue.customer.dashboard.customer_group_orders') }}
                             </span>
@@ -130,7 +130,7 @@
                 <div class="rounded-lg bg-white">
                     <header class="flex items-center justify-between rounded-t-xl bg-[#353F4F] p-3">
                         <div class="flex items-center gap-x-2">
-                            <x-go-info-16 class="h-6 w-6 text-[#CFA55B]" />
+                            <x-akar-info class="h-6 w-6 text-[#CFA55B]" />
                             <span class="ml-1 text-sm font-semibold text-white">
                                 {{ __('adminhub::catalogue.orders.dashboard.recent_orders') }}
                             </span>

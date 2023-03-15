@@ -8,7 +8,7 @@
                 <x-grommet-vm-maintenance class="h-6 w-6" />
             </a>
             <a href="#" class="text-gray-500 hover:text-black">
-                <x-icomoon-eye class="h-6 w-6" />
+                <x-entypo-eye class="h-6 w-6" />
             </a>
         </div>
         <div class="lg:flex lg:items-center lg:justify-end">
@@ -17,12 +17,12 @@
             </div>
             <div class="mt-1 flex items-center">
                 <button type="button">
-                    <x-bx-help-circle class="h-6 w-6 text-black" />
+                    <x-tabler-help class="h-6 w-6 text-black" />
                 </button>
             </div>
             <div class="mt-1 flex items-center pl-3">
                 <button type="button">
-                    <x-bx-search class="h-6 w-6 text-black" />
+                    <x-grommet-search class="h-6 w-6 text-black" />
                 </button>
             </div>
             <div class="mt-3 flex items-center px-3">

@@ -13,8 +13,8 @@
 
     @livewireTableStyles
 
-    <link href="{{ asset('vendor/lunar/admin-hub/app.css?v=1') }}"
-          rel="stylesheet">
+{{--    <link href="{{ asset('vendor/lunar/admin-hub/app.css?v=1') }}"--}}
+{{--          rel="stylesheet">--}}
 
     @if ($viteSupport ?? false)
         @vite($vite ?? [])
@@ -82,7 +82,7 @@
 
     <x-hub::notification />
 
-    @livewire('hub-license')
+    {{--@livewire('hub-license')--}}
     @livewire('system.real-time-notifications')
     @livewireScripts
     @stack('hub-scripts')

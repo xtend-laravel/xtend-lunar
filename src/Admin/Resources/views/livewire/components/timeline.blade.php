@@ -6,7 +6,7 @@
         class="inline-block">
         <span class="relative inline-flex cursor-pointer">
             <button type="button">
-                <x-bx-chat class="h-8 w-8 text-white" />
+                <x-entypo-chat class="h-8 w-8 text-white" />
             </button>
             @if ($this->totalActivityCount)
                 <span class="absolute top-0 right-0 -mt-1 -mr-1 flex h-5 w-5">
@@ -129,7 +129,7 @@
                     'flex items-center justify-center w-12 h-12 text-primary-500 rounded-full bg-primary-50',
                     'dark:bg-gray-700' => config('notifications.dark_mode'),
                 ])>
-                    <x-bx-message class="h-5 w-5" />
+                    <x-far-message class="h-5 w-5" />
                 </div>
 
                 <div class="max-w-md space-y-1">

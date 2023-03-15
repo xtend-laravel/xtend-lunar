@@ -1,7 +1,7 @@
 <div>
     <header class="flex items-center justify-between gap-1 rounded-t-xl bg-[#353F4F] p-3">
         <div class="flex items-center gap-1">
-            <x-go-info-16 class="h-6 w-6 text-[#CFA55B]" />
+            <x-akar-info class="h-6 w-6 text-[#CFA55B]" />
             <span class="ml-1 text-sm font-semibold text-white">{{ __('Features') }}</span>
         </div>
     </header>

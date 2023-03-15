@@ -19,7 +19,7 @@
         @if ($locale)
             <div class="flex items-center space-x-1">
                 <span>
-                    <img class="h-3 w-5" src="{{ asset('img/icons/flags/' . $locale . '.svg') }}" alt="" />
+                    <img class="h-3 w-5" src="{{ Vite::asset('resources/images/flags/' . $locale . '.svg') }}" alt="" />
                 </span>
                 <span class="text-xs font-bold">
                     {{ strtoupper($locale) }}
@@ -46,7 +46,7 @@
                         <div class="flex items-center space-x-1">
                             <span>
                                 <img class="h-3 w-5 shrink-0"
-                                    src="{{ asset('img/icons/flags/' . $language->code . '.svg') }}"
+                                    src="{{ Vite::asset('resources/images/flags/' . $language->code . '.svg') }}"
                                     alt="{{ $language->name }}" />
                             </span>
                             <span class="text-xs font-bold">
