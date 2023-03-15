@@ -13,6 +13,7 @@
         "php": "^8.1",
         "blade-ui-kit/blade-ui-kit": "^0.4.0",
         "codeat3/blade-akar-icons": "^1.2",
+        "codeat3/blade-google-material-design-icons": "^1.17",
         "codeat3/blade-grommet-icons": "^1.6",
         "filament/notifications": "^2.0",
         "filament/tables": "^2.0",
@@ -71,10 +72,7 @@
     "scripts": {
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint",
-        "post-update-cmd": [
-            "@php artisan icons:cache"
-        ]
+        "format": "vendor/bin/pint"
     },
     "config": {
         "sort-packages": true,

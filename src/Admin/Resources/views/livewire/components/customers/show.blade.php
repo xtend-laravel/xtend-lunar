@@ -26,7 +26,7 @@
 
                 <header class="flex items-center justify-between rounded-t-xl bg-[#353F4F] p-3">
                     <div class="flex items-center gap-x-2">
-                        <x-carbon-user-avatar-filled-alt class="h-6 w-6 text-[#CFA55B]" />
+                        <x-heroicon-s-user-circle class="h-6 w-6 text-[#CFA55B]" />
                         <span class="ml-1 text-sm font-semibold text-white">{{ __('Customer Details') }}</span>
                     </div>
                     <button

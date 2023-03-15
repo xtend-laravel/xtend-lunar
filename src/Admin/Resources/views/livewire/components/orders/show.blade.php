@@ -213,7 +213,7 @@
             <div class="mt-4 rounded-t-xl bg-white">
                 <header class="flex items-center justify-between gap-1 rounded-t-xl bg-[#353F4F] p-3">
                     <div class="flex items-center gap-1">
-                        <x-carbon-user-avatar-filled-alt class="h-6 w-6 text-[#CFA55B]" />
+                        <x-heroicon-s-user-circle class="h-6 w-6 text-[#CFA55B]" />
                         <span class="ml-1 text-sm font-semibold text-white">{{ __('Customer Details') }}</span>
                     </div>
                     <a class="ml-4 flex-shrink-0 rounded border bg-gray-50 px-4 py-2 text-xs font-bold text-gray-700 hover:bg-white"

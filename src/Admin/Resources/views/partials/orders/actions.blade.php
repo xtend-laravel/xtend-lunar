@@ -3,7 +3,7 @@
         <button
             class="inline-flex items-center rounded-3xl border border-transparent border-gray-200 bg-[#C3C3C3] px-4 py-2 text-sm font-bold text-white transition hover:border-gray-200 hover:bg-[#A3A3A3]"
             type="button" wire:click.prevent="$set('showRefund', true)">
-            <x-ri-refund-2-line class="mr-2 w-4" />
+            <x-heroicon-o-receipt-refund class="mr-2 w-4" />
 
             @if (count($this->selectedLines))
                 {{ __('adminhub::components.orders.show.refund_lines_btn') }}
@@ -42,12 +42,12 @@
 <button
     class="inline-flex items-center rounded-3xl border border-transparent border-gray-200 bg-blue-500 px-4 py-2 text-sm font-bold text-white transition hover:border-gray-200 hover:bg-blue-700"
     type="button" wire:click.prevent="$set('showDiscount', true)">
-    <x-ri-refund-2-line class="mr-2 w-4" />
+    <x-heroicon-o-receipt-refund class="mr-2 w-4" />
     {{ __('Apply discount') }}
 </button>
 
 <div>
-    
+
     @livewire('hub.components.orders.status', [
         'order' => $this->order,
     ])
