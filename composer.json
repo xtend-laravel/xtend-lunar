@@ -18,6 +18,7 @@
         "filament/notifications": "^2.0",
         "filament/tables": "^2.0",
         "illuminate/contracts": "^9.0|^10.0",
+        "laravel/pennant": "^1.2",
         "owenvoke/blade-entypo": "^2.1",
         "owenvoke/blade-fontawesome": "^2.2",
         "ryangjchandler/blade-tabler-icons": "^2.0",
