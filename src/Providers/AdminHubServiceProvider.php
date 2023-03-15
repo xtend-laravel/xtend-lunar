@@ -8,6 +8,7 @@ use Illuminate\Foundation\Events\LocaleUpdated;
 use Illuminate\Routing\Events\RouteMatched;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
+use Laravel\Pennant\Feature;
 use Livewire\Livewire;
 use Lunar\Hub\AdminHubServiceProvider as AdminHubBaseServiceProvider;
 use Lunar\Hub\Menu\OrderActionsMenu;

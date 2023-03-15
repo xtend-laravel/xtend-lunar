@@ -3,12 +3,10 @@
 namespace Xtend\Extensions\Lunar;
 
 use CodeLabX\XtendLaravel\Base\ExtendsProvider;
-use FontLib\Table\Type\glyf;
 use Illuminate\Routing\Events\RouteMatched;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\View;
+use Illuminate\Support\Collection;
+use Laravel\Pennant\Feature;
 use Livewire\Livewire;
-use Lunar\Base\ShippingModifiers;
 use Lunar\Facades\ModelManifest;
 use Lunar\Facades\Payments;
 use Lunar\Models\Address;
@@ -24,16 +22,16 @@ use Lunar\Models\ProductOptionValue;
 use Lunar\Models\ProductVariant;
 use Xtend\Extensions\Lunar\Core\PaymentTypes\Paypal;
 use Xtend\Extensions\Lunar\Core\PaymentTypes\Payzen;
-use Xtend\Extensions\Lunar\Core\ShippingModifiers\FreeShipping;
-use Xtend\Extensions\Lunar\Core\ShippingModifiers\UpsShippingModifier;
 use Xtend\Extensions\Lunar\Providers\AdminHubServiceProvider;
-use Xtend\Extensions\Lunar\Providers\LunarServiceProvider;
 use Xtend\Extensions\Lunar\Slots\SeoSlot;
 use Xtend\Extensions\Lunar\Slots\ShippingSlot;
+use XtendLunar\Features\FormBuilder\FormBuilderProvider;
 use XtendLunar\Features\HubCustomTheme\HubCustomThemeProvider;
 
 class XtendLunarProvider extends ExtendsProvider
 {
+    protected Collection $features;
+
     /**
      * Extends register service provider
      *
@@ -41,15 +39,39 @@ class XtendLunarProvider extends ExtendsProvider
      */
     public function register(): void
     {
-        $this->bootWithProviders();
+        $this->registerWithFeatureSetup();
+        $this->callAfterResolving('blade.compiler', fn() => $this->registerWithProviders());
     }
 
-    protected function bootWithProviders(): void
+    protected function registerWithFeatureSetup(): void
     {
+        // @todo move to parent xtend provider and check if the feature is active in the config
+        Feature::define('xtend-lunar', fn () => true);
+
+        // @todo Auto scan feature directories and check if the feature is active in the config
+        $this->features = collect([
+            'hub-custom-theme' => HubCustomThemeProvider::class,
+            'form-builder' => FormBuilderProvider::class,
+        ]);
+
+        $this->features->each(function ($provider, $feature) {
+            Feature::define($feature, fn () => true);
+        });
+    }
+
+    protected function registerWithProviders(): void
+    {
+        if (Feature::inactive('xtend-lunar')) {
+           return;
+        }
+
         $this->app->register(AdminHubServiceProvider::class);
 
-        // Features
-        $this->app->register(HubCustomThemeProvider::class);
+        $this->features->each(function ($provider, $feature) {
+            if (Feature::active($feature)) {
+                $this->app->register($provider);
+            }
+        });
     }
 
     /**
@@ -59,6 +81,10 @@ class XtendLunarProvider extends ExtendsProvider
      */
     public function boot(): void
     {
+        if (Feature::inactive('xtend-lunar')) {
+           return;
+        }
+
         $this->bootWithModels();
         $this->bootWithSlots();
         $this->bootWithPaymentProviders();
