@@ -44,18 +44,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
             $this->mergeConfigFrom($path, 'lunar-hub.'.$config);
         });
 
-        // Overrides hub view path
-        $this->loadViewsFrom(__DIR__.'/../Admin/Resources/views', 'adminhub');
-
-        // Overrides hub translations
-        $this->app->register(TranslationServiceProvider::class);
-
-        $this->app->singleton('translation.loader', function ($app) {
-            $app['path.lang'] = __DIR__.'/../Admin/Resources/lang';
-
-            return new FileLoader($app['files'], $app['path.lang']);
-        });
-
         $this->loadRoutesFrom(__DIR__.'/../Admin/Routes/web.php');
     }
 

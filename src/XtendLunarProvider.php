@@ -30,6 +30,7 @@ use Xtend\Extensions\Lunar\Providers\AdminHubServiceProvider;
 use Xtend\Extensions\Lunar\Providers\LunarServiceProvider;
 use Xtend\Extensions\Lunar\Slots\SeoSlot;
 use Xtend\Extensions\Lunar\Slots\ShippingSlot;
+use XtendLunar\Features\HubCustomTheme\HubCustomThemeProvider;
 
 class XtendLunarProvider extends ExtendsProvider
 {
@@ -40,13 +41,15 @@ class XtendLunarProvider extends ExtendsProvider
      */
     public function register(): void
     {
-        dd('register');
         $this->bootWithProviders();
     }
 
     protected function bootWithProviders(): void
     {
         $this->app->register(AdminHubServiceProvider::class);
+
+        // Features
+        $this->app->register(HubCustomThemeProvider::class);
     }
 
     /**
