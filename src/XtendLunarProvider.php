@@ -3,6 +3,7 @@
 namespace Xtend\Extensions\Lunar;
 
 use CodeLabX\XtendLaravel\Base\ExtendsProvider;
+use FontLib\Table\Type\glyf;
 use Illuminate\Routing\Events\RouteMatched;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
@@ -30,19 +31,22 @@ use Xtend\Extensions\Lunar\Providers\LunarServiceProvider;
 use Xtend\Extensions\Lunar\Slots\SeoSlot;
 use Xtend\Extensions\Lunar\Slots\ShippingSlot;
 
-class XtendLunar extends ExtendsProvider
+class XtendLunarProvider extends ExtendsProvider
 {
     /**
      * Extends register service provider
      *
      * @return void
      */
-    public function withRegister(): void
+    public function register(): void
     {
-        // $this->app->register(LivewireTablesServiceProvider::class);
+        dd('register');
+        $this->bootWithProviders();
+    }
+
+    protected function bootWithProviders(): void
+    {
         $this->app->register(AdminHubServiceProvider::class);
-        // $this->app->register(LunarServiceProvider::class);
-        // $this->loadViewsFrom(__DIR__.'/Admin/Resources/views', 'adminhub');
     }
 
     /**
@@ -50,7 +54,7 @@ class XtendLunar extends ExtendsProvider
      *
      * @return void
      */
-    public function withBoot(): void
+    public function boot(): void
     {
         $this->bootWithModels();
         $this->bootWithSlots();
@@ -59,13 +63,6 @@ class XtendLunar extends ExtendsProvider
         $this->bootWithEvents();
         $this->bootWithFieldTypes();
         $this->bootWithComponents();
-
-        View::composer('adminhub::*', function (\Illuminate\View\View $view) {
-            $view->with([
-                'viteSupport' => Blade::defaultAliases()->keys()->contains('Vite'),
-                'vite' => ['resources/css/hub-extend.css', 'resources/js/hub-extend.js'],
-            ]);
-        });
     }
 
     public function bootWithModels(): void
