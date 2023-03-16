@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Xtend\Extensions\Lunar\XtendLunarServiceProvider as XtendLunarBaseServiceProvider
+use Xtend\Extensions\Lunar\XtendLunarProvider;
 
-class XtendLunarServiceProvider extends XtendLunarBaseServiceProvider
+class XtendLunarServiceProvider extends XtendLunarProvider
 {
     /**
      * Extends register service provider
