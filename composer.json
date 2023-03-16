@@ -89,7 +89,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Xtend\\Extensions\\Lunar\\XtendLunarProvider"
+                "Xtend\\Extensions\\Lunar\\XtendLunarServiceProvider"
             ]
         }
     },

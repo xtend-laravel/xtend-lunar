@@ -39,13 +39,18 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
     public function register(): void
     {
         parent::register();
+        $this->registerWithConfig();
 
+        $this->loadRoutesFrom(__DIR__.'/../Admin/Routes/web.php');
+    }
+
+    protected function registerWithConfig(): void
+    {
+        // @todo improve make sure to keep in sync with base class configs
         collect($this->configFiles)->each(function ($config) {
             $path = __DIR__.'/../Config/lunar-hub/'.$config.'.php';
             $this->mergeConfigFrom($path, 'lunar-hub.'.$config);
         });
-
-        $this->loadRoutesFrom(__DIR__.'/../Admin/Routes/web.php');
     }
 
     protected function registerLivewireComponents(): void
@@ -179,6 +184,7 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 
     protected function registerConverters()
     {
+        // @todo Look to change library or submit PR to fix this issue with catalistc
         // $this->registerExchangers();
         // $this->registerConverter();
     }

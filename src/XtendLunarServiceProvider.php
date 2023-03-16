@@ -28,7 +28,7 @@ use Xtend\Extensions\Lunar\Slots\ShippingSlot;
 use XtendLunar\Features\FormBuilder\FormBuilderProvider;
 use XtendLunar\Features\HubCustomTheme\HubCustomThemeProvider;
 
-class XtendLunarProvider extends ExtendsProvider
+class XtendLunarServiceProvider extends ExtendsProvider
 {
     protected Collection $features;
 
@@ -92,6 +92,9 @@ class XtendLunarProvider extends ExtendsProvider
         $this->bootWithEvents();
         $this->bootWithFieldTypes();
         $this->bootWithComponents();
+
+        $this->offerPublishing();
+        $this->registerCommands();
     }
 
     public function bootWithModels(): void
@@ -141,6 +144,34 @@ class XtendLunarProvider extends ExtendsProvider
 
     protected function bootWithComponents()
     {
+    }
+
+    /**
+     * Set up the resource publishing groups for XtendLaravel.
+     *
+     * @return void
+     */
+    protected function offerPublishing()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../stubs/XtendLunarServiceProvider.stub' => app_path('Providers/XtendLunarServiceProvider.php'),
+            ], 'xtend-lunar-provider');
+        }
+    }
+
+    /**
+     * Register the XtendLunar Artisan commands.
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Commands\InstallCommand::class,
+            ]);
+        }
     }
 
     /**
