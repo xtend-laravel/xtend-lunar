@@ -2,13 +2,10 @@
 
 namespace Xtend\Extensions\Lunar;
 
-use Illuminate\Routing\Events\RouteMatched;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Pennant\Feature;
-use Livewire\Livewire;
 use Lunar\Facades\ModelManifest;
-use Lunar\Facades\Payments;
 use Lunar\Models\Address;
 use Lunar\Models\Brand;
 use Lunar\Models\Cart;
@@ -20,13 +17,10 @@ use Lunar\Models\Product;
 use Lunar\Models\ProductOption;
 use Lunar\Models\ProductOptionValue;
 use Lunar\Models\ProductVariant;
-use Xtend\Extensions\Lunar\Core\PaymentTypes\Paypal;
-use Xtend\Extensions\Lunar\Core\PaymentTypes\Payzen;
 use Xtend\Extensions\Lunar\Providers\AdminHubServiceProvider;
-use Xtend\Extensions\Lunar\Slots\SeoSlot;
-use Xtend\Extensions\Lunar\Slots\ShippingSlot;
 use XtendLunar\Features\FormBuilder\FormBuilderProvider;
 use XtendLunar\Features\HubCustomTheme\HubCustomThemeProvider;
+use XtendLunar\Features\LanguageSwitch\LanguageSwitchProvider;
 
 class XtendLunarProvider extends ServiceProvider
 {
@@ -51,6 +45,7 @@ class XtendLunarProvider extends ServiceProvider
         // @todo Auto scan feature directories and check if the feature is active in the config
         $this->features = collect([
             'hub-custom-theme' => HubCustomThemeProvider::class,
+            'language-switch' => LanguageSwitchProvider::class,
             'form-builder' => FormBuilderProvider::class,
         ]);
 
@@ -86,12 +81,6 @@ class XtendLunarProvider extends ServiceProvider
         }
 
         $this->bootWithModels();
-        $this->bootWithSlots();
-        $this->bootWithPaymentProviders();
-        $this->bootWithShippingModifiers();
-        $this->bootWithEvents();
-        $this->bootWithFieldTypes();
-        $this->bootWithComponents();
     }
 
     public function bootWithModels(): void
@@ -110,63 +99,5 @@ class XtendLunarProvider extends ServiceProvider
             Brand::class => \Xtend\Extensions\Lunar\Core\Models\Brand::class,
         ]);
         ModelManifest::register($models);
-    }
-
-    protected function bootWithSlots(): void
-    {
-        Livewire::component('hub.products.slots.seo-slot', SeoSlot::class);
-        Livewire::component('hub.orders.slots.shipping-slot', ShippingSlot::class);
-    }
-
-    protected function bootWithPaymentProviders(): void
-    {
-        Payments::extend('paypal', fn ($app) => $app->make(Paypal::class));
-        Payments::extend('payzen', fn ($app) => $app->make(Payzen::class));
-    }
-
-    protected function bootWithShippingModifiers(): void
-    {
-        // $shippingModifiers = resolve(ShippingModifiers::class);
-        // $shippingModifiers->add(FreeShipping::class);
-        // $shippingModifiers->add(UpsShippingModifier::class);
-    }
-
-    protected function bootWithEvents(): void
-    {
-    }
-
-    protected function bootWithFieldTypes()
-    {
-    }
-
-    protected function bootWithComponents()
-    {
-    }
-
-    /**
-     * Extend Hub Assets
-     *
-     * @todo This will add support to push to stacks not used right now.
-     *
-     * @param  \Illuminate\Routing\Events\RouteMatched  $event
-     * @return void
-     */
-    protected function extendHubAssets(RouteMatched $event): void
-    {
-        if (! str_starts_with($event->route->getName(), 'hub.')) {
-            return;
-        }
-
-        app('view')->startPush('hub-styles', collect([
-            '<style>',
-            //'',
-            'footer { background: transparent!important; };',
-            '</style>',
-        ])->implode("\n"));
-
-        app('view')->startPush('hub-scripts', collect([
-            'console.info(\'Extend hub scripts\');',
-            'Livewire.hook(\'component.initialized\', (component) => console.info(component.name));',
-        ])->map(fn ($script) => "<script>{$script}</script>")->implode("\n"));
     }
 }
