@@ -21,8 +21,10 @@ use Xtend\Extensions\Lunar\Providers\AdminHubServiceProvider;
 use XtendLunar\Features\FormBuilder\FormBuilderProvider;
 use XtendLunar\Features\HubCustomTheme\HubCustomThemeProvider;
 use XtendLunar\Features\LanguageSwitch\LanguageSwitchProvider;
+use XtendLunar\Features\PaymentGateways\PaymentGatewaysProvider;
 use XtendLunar\Features\ProductFeatures\ProductFeaturesProvider;
 use XtendLunar\Features\ProductOptions\ProductOptionsProvider;
+use XtendLunar\Features\ShippingProviders\ShippingProvidersProvider;
 use XtendLunar\Features\SidebarMenu\SidebarMenuProvider;
 
 class XtendLunarProvider extends ServiceProvider
@@ -45,7 +47,7 @@ class XtendLunarProvider extends ServiceProvider
         // @todo move to parent xtend provider and check if the feature is active in the config
         Feature::define('xtend-lunar', fn () => true);
 
-        // @todo Auto scan feature directories and check if the feature is active in the config
+        // @todo Auto scan feature directories and check if the feature is installed and active in the config
         $this->features = collect([
             'hub-custom-theme' => HubCustomThemeProvider::class,
             'language-switch' => LanguageSwitchProvider::class,
@@ -53,6 +55,8 @@ class XtendLunarProvider extends ServiceProvider
             'form-builder' => FormBuilderProvider::class,
             'product-features' => ProductFeaturesProvider::class,
             'product-options' => ProductOptionsProvider::class,
+            //'payment-gateways' => PaymentGatewaysProvider::class,
+            //'shipping-providers' => ShippingProvidersProvider::class,
         ]);
 
         $this->features->each(function ($provider, $feature) {

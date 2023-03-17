@@ -29,7 +29,9 @@
         "xtend-laravel/feature-lunar-product-options": "dev-main",
         "xtend-laravel/feature-lunar-hub-custom-theme": "dev-main",
         "xtend-laravel/feature-lunar-language-switch": "dev-main",
-        "xtend-laravel/feature-lunar-sidebar-menu": "dev-main"
+        "xtend-laravel/feature-lunar-sidebar-menu": "dev-main",
+        "xtend-laravel/feature-lunar-payment-gateways": "dev-main",
+        "xtend-laravel/feature-lunar-shipping-providers": "dev-main"
     },
     "require-dev": {
         "laravel/pint": "^1.6",
@@ -78,6 +80,14 @@
         {
             "type": "vcs",
             "url": "https://github.com/xtend-laravel/feature-lunar-hub-custom-theme"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/xtend-laravel/feature-lunar-payment-gateways"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/xtend-laravel/feature-lunar-shipping-providers"
         }
     ],
     "autoload": {
