@@ -26,6 +26,7 @@
         "xtend-laravel/feature-lunar-notify-timeline": "dev-main",
         "xtend-laravel/feature-lunar-manage-carts": "dev-main",
         "xtend-laravel/feature-lunar-product-features": "dev-main",
+        "xtend-laravel/feature-lunar-product-options": "dev-main",
         "xtend-laravel/feature-lunar-hub-custom-theme": "dev-main",
         "xtend-laravel/feature-lunar-language-switch": "dev-main",
         "xtend-laravel/feature-lunar-sidebar-menu": "dev-main"
@@ -61,6 +62,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/xtend-laravel/feature-lunar-product-features"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/xtend-laravel/feature-lunar-product-options"
         },
         {
             "type": "vcs",

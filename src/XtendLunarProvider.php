@@ -21,6 +21,8 @@ use Xtend\Extensions\Lunar\Providers\AdminHubServiceProvider;
 use XtendLunar\Features\FormBuilder\FormBuilderProvider;
 use XtendLunar\Features\HubCustomTheme\HubCustomThemeProvider;
 use XtendLunar\Features\LanguageSwitch\LanguageSwitchProvider;
+use XtendLunar\Features\ProductFeatures\ProductFeaturesProvider;
+use XtendLunar\Features\ProductOptions\ProductOptionsProvider;
 use XtendLunar\Features\SidebarMenu\SidebarMenuProvider;
 
 class XtendLunarProvider extends ServiceProvider
@@ -49,6 +51,8 @@ class XtendLunarProvider extends ServiceProvider
             'language-switch' => LanguageSwitchProvider::class,
             'sidebar-menu' => SidebarMenuProvider::class,
             'form-builder' => FormBuilderProvider::class,
+            'product-features' => ProductFeaturesProvider::class,
+            'product-options' => ProductOptionsProvider::class,
         ]);
 
         $this->features->each(function ($provider, $feature) {
