@@ -6,6 +6,7 @@ use Illuminate\Foundation\Events\LocaleUpdated;
 use Illuminate\Routing\Events\RouteMatched;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
+use Laravel\Pennant\Feature;
 use Livewire\Livewire;
 use Lunar\Hub\AdminHubServiceProvider as AdminHubBaseServiceProvider;
 use Lunar\Hub\Menu\OrderActionsMenu;
@@ -24,12 +25,10 @@ use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProfileForm;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Shippings\Tables\ListShippingLocations;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Shippings\Tables\ListShippingOptions;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Shippings\Tables\ListShippingZones;
-use Xtend\Extensions\Lunar\Admin\Livewire\Components\SwitchLanguage;
 use Xtend\Extensions\Lunar\Admin\Livewire\Dashboard;
 use Xtend\Extensions\Lunar\Admin\Livewire\Pages\ProductOptions\ProductOptionsIndex;
-use Xtend\Extensions\Lunar\Admin\Livewire\Sidebar;
-use Xtend\Extensions\Lunar\Admin\Menu\SettingsMenu;
-use Xtend\Extensions\Lunar\Admin\Menu\SidebarMenu;
+use XtendLunar\Features\SidebarMenu\Menu\SettingsMenu;
+use XtendLunar\Features\SidebarMenu\Menu\SidebarMenu;
 
 class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 {
@@ -55,10 +54,7 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 
     protected function registerLivewireComponents(): void
     {
-        Livewire::component('sidebar', Sidebar::class);
         Livewire::component('dashboard', Dashboard::class);
-
-        //Livewire::component('hub.components.switch-language', SwitchLanguage::class);
 
         // Livewire Form Components
         $this->registerFormComponents();
@@ -167,8 +163,10 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
     protected function registerMenuBuilder(): void
     {
         Event::listen(LocaleUpdated::class, function () {
-            SidebarMenu::make();
-            SettingsMenu::make();
+            if (Feature::active('sidebar-menu')) {
+                SidebarMenu::make();
+                SettingsMenu::make();
+            }
             OrderActionsMenu::make();
         });
     }
