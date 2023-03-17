@@ -23,6 +23,7 @@
         "owenvoke/blade-fontawesome": "^2.2",
         "ryangjchandler/blade-tabler-icons": "^2.0",
         "xtend-laravel/feature-lunar-form-builder": "dev-main",
+        "xtend-laravel/feature-lunar-filament-tables": "dev-main",
         "xtend-laravel/feature-lunar-notify-timeline": "dev-main",
         "xtend-laravel/feature-lunar-manage-carts": "dev-main",
         "xtend-laravel/feature-lunar-product-features": "dev-main",
@@ -52,6 +53,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/xtend-laravel/feature-lunar-form-builder"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/xtend-laravel/feature-lunar-filament-tables"
         },
         {
             "type": "vcs",

@@ -18,6 +18,7 @@ use Lunar\Models\ProductOption;
 use Lunar\Models\ProductOptionValue;
 use Lunar\Models\ProductVariant;
 use Xtend\Extensions\Lunar\Providers\AdminHubServiceProvider;
+use XtendLunar\Features\FilamentTables\FilamentTablesProvider;
 use XtendLunar\Features\FormBuilder\FormBuilderProvider;
 use XtendLunar\Features\HubCustomTheme\HubCustomThemeProvider;
 use XtendLunar\Features\LanguageSwitch\LanguageSwitchProvider;
@@ -53,10 +54,11 @@ class XtendLunarProvider extends ServiceProvider
             'language-switch' => LanguageSwitchProvider::class,
             'sidebar-menu' => SidebarMenuProvider::class,
             'form-builder' => FormBuilderProvider::class,
+            'filament-tables' => FilamentTablesProvider::class,
             'product-features' => ProductFeaturesProvider::class,
             'product-options' => ProductOptionsProvider::class,
-            //'payment-gateways' => PaymentGatewaysProvider::class,
-            //'shipping-providers' => ShippingProvidersProvider::class,
+            'payment-gateways' => PaymentGatewaysProvider::class,
+            'shipping-providers' => ShippingProvidersProvider::class,
         ]);
 
         $this->features->each(function ($provider, $feature) {
