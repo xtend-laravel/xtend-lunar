@@ -12,8 +12,6 @@ use Lunar\Hub\AdminHubServiceProvider as AdminHubBaseServiceProvider;
 use Lunar\Hub\Menu\OrderActionsMenu;
 use Xtend\Extensions\Lunar\Admin\Listeners\SetStaffAuthMiddlewareListener;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Customers\CustomerShow;
-use Xtend\Extensions\Lunar\Admin\Livewire\Components\Forms\ChannelForm;
-use Xtend\Extensions\Lunar\Admin\Livewire\Components\Forms\CustomerDetailForm;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderAddress;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderDiscount;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderShow;
@@ -21,7 +19,6 @@ use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProductOptions\OptionEdit;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProductOptions\OptionValueEdit;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Products\ProductCreate;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Products\ProductShow;
-use Xtend\Extensions\Lunar\Admin\Livewire\Components\ProfileForm;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Shippings\Tables\ListShippingLocations;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Shippings\Tables\ListShippingOptions;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Shippings\Tables\ListShippingZones;
@@ -55,9 +52,7 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
     protected function registerLivewireComponents(): void
     {
         Livewire::component('dashboard', Dashboard::class);
-
-        // Livewire Form Components
-        $this->registerFormComponents();
+        Livewire::component('hub.components.customers.show', CustomerShow::class);
 
         // Livewire Table Components
         $this->registerLivewireTableComponents();
@@ -81,18 +76,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         Livewire::component('hub.components.orders.discount', OrderDiscount::class);
         Livewire::component('hub.components.orders.show', OrderShow::class);
         Livewire::component('hub.components.orders.address', OrderAddress::class);
-    }
-
-    protected function registerCustomerComponents()
-    {
-        Livewire::component('hub.components.customers.show', CustomerShow::class);
-    }
-
-    protected function registerFormComponents(): void
-    {
-        Livewire::component('hub.components.forms.channel-form', ChannelForm::class);
-        Livewire::component('hub.components.forms.customer-detail-form', CustomerDetailForm::class);
-        Livewire::component('hub.components.forms.profile-form', ProfileForm::class);
     }
 
     protected function registerSettingsComponents(): void

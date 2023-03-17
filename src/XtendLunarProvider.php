@@ -52,6 +52,7 @@ class XtendLunarProvider extends ServiceProvider
         ]);
 
         $this->features->each(function ($provider, $feature) {
+            // @todo Set boolean for each feature which will be loaded from the config initially - later from the database in hub feature management section
             Feature::define($feature, fn () => true);
         });
     }
