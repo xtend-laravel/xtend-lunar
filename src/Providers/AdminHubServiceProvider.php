@@ -2,13 +2,10 @@
 
 namespace Xtend\Extensions\Lunar\Providers;
 
-use CodeLabX\XtendLaravel\Services\Translation\FileLoader;
-use CodeLabX\XtendLaravel\Services\Translation\TranslationServiceProvider;
 use Illuminate\Foundation\Events\LocaleUpdated;
 use Illuminate\Routing\Events\RouteMatched;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Event;
-use Laravel\Pennant\Feature;
 use Livewire\Livewire;
 use Lunar\Hub\AdminHubServiceProvider as AdminHubBaseServiceProvider;
 use Lunar\Hub\Menu\OrderActionsMenu;
@@ -36,30 +33,32 @@ use Xtend\Extensions\Lunar\Admin\Menu\SidebarMenu;
 
 class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 {
+    protected $root = __DIR__.'/../Config/lunar-hub';
+
     public function register(): void
     {
-        parent::register();
         $this->registerWithConfig();
-
         $this->loadRoutesFrom(__DIR__.'/../Admin/Routes/web.php');
     }
 
     protected function registerWithConfig(): void
     {
-        // @todo improve make sure to keep in sync with base class configs
         collect($this->configFiles)->each(function ($config) {
-            $path = __DIR__.'/../Config/lunar-hub/'.$config.'.php';
-            $this->mergeConfigFrom($path, 'lunar-hub.'.$config);
+            config([
+                "lunar-hub.$config" => array_merge(
+                    config("lunar-hub.$config"),
+                    include_once("{$this->root}/$config.php"),
+                ),
+            ]);
         });
     }
 
     protected function registerLivewireComponents(): void
     {
-        parent::registerLivewireComponents();
-
         Livewire::component('sidebar', Sidebar::class);
         Livewire::component('dashboard', Dashboard::class);
-        Livewire::component('hub.components.switch-language', SwitchLanguage::class);
+
+        //Livewire::component('hub.components.switch-language', SwitchLanguage::class);
 
         // Livewire Form Components
         $this->registerFormComponents();
@@ -73,8 +72,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 
     protected function registerProductComponents()
     {
-        parent::registerProductComponents();
-
         Livewire::component('hub.components.products.show', ProductShow::class);
         Livewire::component('hub.components.products.create', ProductCreate::class);
 
@@ -85,8 +82,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 
     protected function registerOrderComponents(): void
     {
-        parent::registerOrderComponents();
-
         Livewire::component('hub.components.orders.discount', OrderDiscount::class);
         Livewire::component('hub.components.orders.show', OrderShow::class);
         Livewire::component('hub.components.orders.address', OrderAddress::class);
@@ -94,8 +89,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 
     protected function registerCustomerComponents()
     {
-        parent::registerCustomerComponents();
-
         Livewire::component('hub.components.customers.show', CustomerShow::class);
     }
 
@@ -108,8 +101,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 
     protected function registerSettingsComponents(): void
     {
-        parent::registerSettingsComponents();
-
         Livewire::component('hub.components.settings.shippings.tables.list-shipping-zones', ListShippingZones::class);
         Livewire::component('hub.components.settings.shippings.tables.list-shipping-locations', ListShippingLocations::class);
         Livewire::component('hub.components.settings.shippings.tables.list-shipping-options', ListShippingOptions::class);
