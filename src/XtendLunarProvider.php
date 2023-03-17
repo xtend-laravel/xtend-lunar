@@ -2,9 +2,9 @@
 
 namespace Xtend\Extensions\Lunar;
 
-use CodeLabX\XtendLaravel\Base\ExtendsProvider;
 use Illuminate\Routing\Events\RouteMatched;
 use Illuminate\Support\Collection;
+use Illuminate\Support\ServiceProvider;
 use Laravel\Pennant\Feature;
 use Livewire\Livewire;
 use Lunar\Facades\ModelManifest;
@@ -28,7 +28,7 @@ use Xtend\Extensions\Lunar\Slots\ShippingSlot;
 use XtendLunar\Features\FormBuilder\FormBuilderProvider;
 use XtendLunar\Features\HubCustomTheme\HubCustomThemeProvider;
 
-class XtendLunarProvider extends ExtendsProvider
+class XtendLunarProvider extends ServiceProvider
 {
     protected Collection $features;
 

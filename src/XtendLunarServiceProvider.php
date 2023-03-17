@@ -2,17 +2,14 @@
 
 namespace Xtend\Extensions\Lunar;
 
-use CodeLabX\XtendLaravel\Base\ExtendsProvider;
-use Illuminate\Support\Collection;
+use CodeLabX\XtendLaravel\Base\XtendPackageProvider;
 
-class XtendLunarServiceProvider extends ExtendsProvider
+class XtendLunarServiceProvider extends XtendPackageProvider
 {
-    protected Collection $features;
+    protected static string $packageToXtend = 'lunarphp/lunar';
 
     /**
-     * XtendLunarServiceProvider service provider
-     *
-     * @return void
+     * XtendLunarServiceProvider register
      */
     public function register(): void
     {
@@ -22,48 +19,24 @@ class XtendLunarServiceProvider extends ExtendsProvider
     protected function registerWithProvider(): void
     {
         $this->callAfterResolving('blade.compiler', function () {
-            if (!$this->app->providerIsLoaded('App\\Providers\\Xtend\\XtendLunarServiceProvider')) {
-                $this->app->register(XtendLunarProvider::class);
-            }
+            $appProvider = 'App\\Providers\\XtendLunarServiceProvider';
+            $this->app->register(
+                provider: !class_exists($appProvider)
+                    ? XtendLunarProvider::class
+                    : $appProvider,
+            );
         });
     }
 
     /**
-     * XtendLunarServiceProvider service provider
-     *
-     * @return void
+     * XtendLunarServiceProvider boot
      */
     public function boot(): void
-    {
-        $this->offerPublishing();
-        $this->registerCommands();
-    }
-
-    /**
-     * Set up the resource publishing groups for XtendLaravel.
-     *
-     * @return void
-     */
-    protected function offerPublishing()
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../stubs/XtendLunarServiceProvider.stub' => app_path('Providers/XtendLunarServiceProvider.php'),
             ], 'xtend-lunar-provider');
-        }
-    }
-
-    /**
-     * Register the XtendLunar Artisan commands.
-     *
-     * @return void
-     */
-    protected function registerCommands()
-    {
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                Commands\InstallCommand::class,
-            ]);
         }
     }
 }
