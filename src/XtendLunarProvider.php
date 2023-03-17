@@ -57,8 +57,8 @@ class XtendLunarProvider extends ServiceProvider
             'filament-tables' => FilamentTablesProvider::class,
             'product-features' => ProductFeaturesProvider::class,
             'product-options' => ProductOptionsProvider::class,
-            'payment-gateways' => PaymentGatewaysProvider::class,
-            'shipping-providers' => ShippingProvidersProvider::class,
+            //'payment-gateways' => PaymentGatewaysProvider::class,
+            //'shipping-providers' => ShippingProvidersProvider::class,
         ]);
 
         $this->features->each(function ($provider, $feature) {
