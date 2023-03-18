@@ -6,7 +6,7 @@ use Filament\Tables;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
-use Xtend\Extensions\Lunar\Core\Models\ShippingOption;
+use XtendLunar\Features\ShippingProviders\Models\ShippingOption;
 
 class ListShippingOptions extends Component implements Tables\Contracts\HasTable
 {

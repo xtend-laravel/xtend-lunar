@@ -58,7 +58,7 @@ class XtendLunarProvider extends ServiceProvider
             'product-features' => ProductFeaturesProvider::class,
             'product-options' => ProductOptionsProvider::class,
             //'payment-gateways' => PaymentGatewaysProvider::class,
-            //'shipping-providers' => ShippingProvidersProvider::class,
+            'shipping-providers' => ShippingProvidersProvider::class,
         ]);
 
         $this->features->each(function ($provider, $feature) {
