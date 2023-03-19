@@ -32,7 +32,8 @@
         "xtend-laravel/feature-lunar-language-switch": "dev-main",
         "xtend-laravel/feature-lunar-sidebar-menu": "dev-main",
         "xtend-laravel/feature-lunar-payment-gateways": "dev-main",
-        "xtend-laravel/feature-lunar-shipping-providers": "dev-main"
+        "xtend-laravel/feature-lunar-shipping-providers": "dev-main",
+        "xtend-laravel/addon-page-builder": "dev-main"
     },
     "require-dev": {
         "laravel/pint": "^1.6",
@@ -43,6 +44,11 @@
         "phpunit/phpunit": "^10.0"
     },
     "local_repositories": [
+        {
+            "type": "path",
+            "url": "./addons/*",
+            "symlink": true
+        },
         {
             "type": "path",
             "url": "./features/*",
@@ -93,6 +99,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/xtend-laravel/feature-lunar-shipping-providers"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/xtend-laravel/addon-page-builder"
         }
     ],
     "autoload": {
