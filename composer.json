@@ -33,7 +33,8 @@
         "xtend-laravel/feature-lunar-sidebar-menu": "dev-main",
         "xtend-laravel/feature-lunar-payment-gateways": "dev-main",
         "xtend-laravel/feature-lunar-shipping-providers": "dev-main",
-        "xtend-laravel/addon-page-builder": "dev-main"
+        "xtend-laravel/addon-page-builder": "dev-main",
+        "xtend-laravel/addon-restify-api": "dev-main"
     },
     "require-dev": {
         "laravel/pint": "^1.6",
@@ -103,6 +104,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/xtend-laravel/addon-page-builder"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/xtend-laravel/addon-restify-api"
         }
     ],
     "autoload": {
