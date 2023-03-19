@@ -56,7 +56,7 @@
             "symlink": true
         }
     ],
-    "_repositories": [
+    "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/xtend-laravel/feature-lunar-form-builder"
