@@ -18,6 +18,7 @@ class FreeShipping extends ShippingModifier
 
         ShippingManifest::addOption(
             new ShippingOption(
+                name: 'Free Shipping',
                 description: 'Free Shipping',
                 identifier: 'FREE_SHIPPING',
                 price: new Price(0, $cart->currency, 1),
