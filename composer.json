@@ -21,7 +21,8 @@
         "laravel/pennant": "^1.2",
         "owenvoke/blade-entypo": "^2.1",
         "owenvoke/blade-fontawesome": "^2.2",
-        "ryangjchandler/blade-tabler-icons": "^2.0"
+        "ryangjchandler/blade-tabler-icons": "^2.0",
+        "xtend-laravel/feature-lunar-hub-custom-theme": "dev-main"
     },
     "require-dev": {
         "laravel/pint": "^1.6",
@@ -41,6 +42,12 @@
             "type": "path",
             "url": "./features/*",
             "symlink": true
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/xtend-laravel/feature-lunar-hub-custom-theme"
         }
     ],
     "autoload": {
