@@ -21,20 +21,7 @@
         "laravel/pennant": "^1.2",
         "owenvoke/blade-entypo": "^2.1",
         "owenvoke/blade-fontawesome": "^2.2",
-        "ryangjchandler/blade-tabler-icons": "^2.0",
-        "xtend-laravel/feature-lunar-form-builder": "dev-main",
-        "xtend-laravel/feature-lunar-filament-tables": "dev-main",
-        "xtend-laravel/feature-lunar-notify-timeline": "dev-main",
-        "xtend-laravel/feature-lunar-manage-carts": "dev-main",
-        "xtend-laravel/feature-lunar-product-features": "dev-main",
-        "xtend-laravel/feature-lunar-product-options": "dev-main",
-        "xtend-laravel/feature-lunar-hub-custom-theme": "dev-main",
-        "xtend-laravel/feature-lunar-language-switch": "dev-main",
-        "xtend-laravel/feature-lunar-sidebar-menu": "dev-main",
-        "xtend-laravel/feature-lunar-payment-gateways": "dev-main",
-        "xtend-laravel/feature-lunar-shipping-providers": "dev-main",
-        "xtend-laravel/addon-page-builder": "dev-main",
-        "xtend-laravel/addon-restify-api": "dev-main"
+        "ryangjchandler/blade-tabler-icons": "^2.0"
     },
     "require-dev": {
         "laravel/pint": "^1.6",
@@ -54,68 +41,6 @@
             "type": "path",
             "url": "./features/*",
             "symlink": true
-        }
-    ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-form-builder"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-filament-tables"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-notify-timeline"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-manage-carts"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-product-features"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-product-options"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-language-switch"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-sidebar-menu"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-hub-custom-theme"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-payment-gateways"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-shipping-providers"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/addon-page-builder"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/addon-restify-api"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/addon-payment-gateway-stripe"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/addon-shipping-provider-ups"
         }
     ],
     "autoload": {
