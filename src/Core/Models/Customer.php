@@ -11,11 +11,9 @@ use Lunar\Base\Casts\AsAttributeData;
 use Lunar\Base\Traits\LogsActivity;
 use Lunar\Models\Cart;
 use Lunar\Models\Language;
-use XtendLunar\Features\NotifyTimeline\Concerns\HasModelNotification;
 
 class Customer extends \Lunar\Models\Customer
 {
-    use HasModelNotification;
     use LogsActivity;
     use SoftDeletes;
     use Notifiable;
@@ -33,7 +31,7 @@ class Customer extends \Lunar\Models\Customer
     protected static function booted(): void
     {
         static::created(function (self $customer) {
-            $customer->notify(static::customerNotification($customer));
+            //$customer->notify(static::customerNotification($customer));
         });
     }
 

@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Notifications\Notifiable;
 use Lunar\Base\Casts\Price;
 use Lunar\Base\Casts\TaxBreakdown;
-use XtendLunar\Features\NotifyTimeline\Concerns\HasModelNotification;
 
 /**
  * Class Order
@@ -15,7 +14,6 @@ use XtendLunar\Features\NotifyTimeline\Concerns\HasModelNotification;
  */
 class Order extends \Lunar\Models\Order
 {
-    use HasModelNotification;
     use Notifiable;
 
     /**
@@ -36,7 +34,7 @@ class Order extends \Lunar\Models\Order
     protected static function booted(): void
     {
         static::created(function (self $order) {
-            $order->notify(static::orderNotification($order));
+            //$order->notify(static::orderNotification($order));
         });
     }
 
