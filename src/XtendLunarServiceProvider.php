@@ -13,6 +13,8 @@ class XtendLunarServiceProvider extends XtendPackageProvider
      */
     public function register(): void
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/xtend-lunar.php', 'lunar');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->registerWithProvider();
     }
 
@@ -37,6 +39,9 @@ class XtendLunarServiceProvider extends XtendPackageProvider
             $this->publishes([
                 __DIR__.'/../stubs/XtendLunarServiceProvider.stub' => app_path('Providers/XtendLunarServiceProvider.php'),
             ], 'xtend-lunar-provider');
+            $this->publishes([
+                __DIR__.'/../config/xtend-lunar.php' => config_path('xtend/lunar.php'),
+            ], 'xtend-lunar-config');
         }
     }
 }
