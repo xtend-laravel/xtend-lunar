@@ -20,13 +20,10 @@ use Lunar\Models\ProductVariant;
 use Xtend\Extensions\Lunar\Providers\AdminHubServiceProvider;
 use XtendLunar\Features\FilamentTables\FilamentTablesProvider;
 use XtendLunar\Features\FormBuilder\FormBuilderProvider;
-use XtendLunar\Features\HubCustomTheme\HubCustomThemeProvider;
-use XtendLunar\Features\LanguageSwitch\LanguageSwitchProvider;
 use XtendLunar\Features\PaymentGateways\PaymentGatewaysProvider;
 use XtendLunar\Features\ProductFeatures\ProductFeaturesProvider;
 use XtendLunar\Features\ProductOptions\ProductOptionsProvider;
 use XtendLunar\Features\ShippingProviders\ShippingProvidersProvider;
-use XtendLunar\Features\SidebarMenu\SidebarMenuProvider;
 
 class XtendLunarProvider extends ServiceProvider
 {
@@ -40,6 +37,8 @@ class XtendLunarProvider extends ServiceProvider
     public function register(): void
     {
         $this->registerWithFeatureSetup();
+        $this->defineFeatures();
+
         $this->callAfterResolving('blade.compiler', fn() => $this->registerWithProviders());
     }
 
@@ -50,9 +49,6 @@ class XtendLunarProvider extends ServiceProvider
 
         // @todo Auto scan feature directories and check if the feature is installed and active in the config
         $this->features = collect([
-            'hub-custom-theme' => HubCustomThemeProvider::class,
-            'language-switch' => LanguageSwitchProvider::class,
-            'sidebar-menu' => SidebarMenuProvider::class,
             'form-builder' => FormBuilderProvider::class,
             'filament-tables' => FilamentTablesProvider::class,
             'product-features' => ProductFeaturesProvider::class,
@@ -60,7 +56,10 @@ class XtendLunarProvider extends ServiceProvider
             'payment-gateways' => PaymentGatewaysProvider::class,
             'shipping-providers' => ShippingProvidersProvider::class,
         ]);
+    }
 
+    protected function defineFeatures(): void
+    {
         $this->features->each(function ($provider, $feature) {
             // @todo Set boolean for each feature which will be loaded from the config initially - later from the database in hub feature management section
             Feature::define($feature, fn () => true);
