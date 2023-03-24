@@ -113,7 +113,7 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/xtend-laravel/payment-gateway-stripe"
+            "url": "https://github.com/xtend-laravel/addon-payment-gateway-stripe"
         },
         {
             "type": "vcs",
