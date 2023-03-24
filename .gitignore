@@ -1,4 +1,5 @@
 addons
 features
 /vendor
+/.idea
 .DS_Store

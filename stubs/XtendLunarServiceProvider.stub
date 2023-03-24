@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Providers;
+
+use Xtend\Extensions\Lunar\XtendLunarProvider;
+
+class XtendLunarServiceProvider extends XtendLunarProvider
+{
+    /**
+     * Extends register service provider
+     */
+    public function register(): void
+    {
+        parent::register();
+    }
+
+    /**
+     * Extends boot service provider
+     */
+    public function boot(): void
+    {
+        parent::boot();
+    }
+}
