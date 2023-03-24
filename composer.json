@@ -44,12 +44,6 @@
             "symlink": true
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/xtend-laravel/feature-lunar-hub-custom-theme"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "Xtend\\Extensions\\Lunar\\": "src"
