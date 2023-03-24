@@ -18,15 +18,6 @@ use Lunar\Models\ProductOption;
 use Lunar\Models\ProductOptionValue;
 use Lunar\Models\ProductVariant;
 use Xtend\Extensions\Lunar\Providers\AdminHubServiceProvider;
-use XtendLunar\Features\FilamentTables\FilamentTablesProvider;
-use XtendLunar\Features\FormBuilder\FormBuilderProvider;
-use XtendLunar\Features\HubCustomTheme\HubCustomThemeProvider;
-use XtendLunar\Features\LanguageSwitch\LanguageSwitchProvider;
-use XtendLunar\Features\PaymentGateways\PaymentGatewaysProvider;
-use XtendLunar\Features\ProductFeatures\ProductFeaturesProvider;
-use XtendLunar\Features\ProductOptions\ProductOptionsProvider;
-use XtendLunar\Features\ShippingProviders\ShippingProvidersProvider;
-use XtendLunar\Features\SidebarMenu\SidebarMenuProvider;
 
 class XtendLunarProvider extends ServiceProvider
 {
@@ -50,15 +41,15 @@ class XtendLunarProvider extends ServiceProvider
 
         // @todo Auto scan feature directories and check if the feature is installed and active in the config
         $this->features = collect([
-            'hub-custom-theme' => HubCustomThemeProvider::class,
-            'language-switch' => LanguageSwitchProvider::class,
-            'sidebar-menu' => SidebarMenuProvider::class,
-            'form-builder' => FormBuilderProvider::class,
-            'filament-tables' => FilamentTablesProvider::class,
-            'product-features' => ProductFeaturesProvider::class,
-            'product-options' => ProductOptionsProvider::class,
-            'payment-gateways' => PaymentGatewaysProvider::class,
-            'shipping-providers' => ShippingProvidersProvider::class,
+            // 'hub-custom-theme' => HubCustomThemeProvider::class,
+            // 'language-switch' => LanguageSwitchProvider::class,
+            // 'sidebar-menu' => SidebarMenuProvider::class,
+            // 'form-builder' => FormBuilderProvider::class,
+            // 'filament-tables' => FilamentTablesProvider::class,
+            // 'product-features' => ProductFeaturesProvider::class,
+            // 'product-options' => ProductOptionsProvider::class,
+            // 'payment-gateways' => PaymentGatewaysProvider::class,
+            // 'shipping-providers' => ShippingProvidersProvider::class,
         ]);
 
         $this->features->each(function ($provider, $feature) {
@@ -77,7 +68,7 @@ class XtendLunarProvider extends ServiceProvider
 
         $this->features->each(function ($provider, $feature) {
             if (Feature::active($feature)) {
-                $this->app->register($provider);
+                //$this->app->register($provider);
             }
         });
     }
