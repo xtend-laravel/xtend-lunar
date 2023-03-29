@@ -11,7 +11,6 @@ return new class extends Migration
     {
         Schema::table($this->prefix.'staff', function (Blueprint $table) {
             $table->foreignId('language_id')
-                ->default(Language::getDefault()->id)
                 ->after('id')->constrained($this->prefix.'languages');
         });
     }
