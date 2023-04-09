@@ -57,7 +57,7 @@ class Product extends \Lunar\Models\Product
             secondKey: 'id',
             localKey: 'id',
             secondLocalKey: 'collection_id'
-        )->where('lunar_collections.collection_group_id', CollectionGroup::whereHandle('categories_group')->first()->id);
+        )->where('lunar_collections.collection_group_id', CollectionGroup::whereHandle('categories')->first()->id);
     }
 
     public function primaryCategory(): BelongsTo
