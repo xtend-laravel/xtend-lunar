@@ -32,7 +32,6 @@
         "xtend-laravel/feature-lunar-shipping-providers": "dev-main",
         "xtend-laravel/addon-page-builder": "dev-main",
         "xtend-laravel/addon-restify-api": "dev-main",
-        "xtend-laravel/addon-shipping-provider-ups": "dev-main",
         "xtend-laravel/addon-payment-gateway-stripe": "dev-main"
     },
     "require-dev": {
@@ -43,18 +42,6 @@
         "pestphp/pest-plugin-laravel": "^1.4",
         "phpunit/phpunit": "^10.0"
     },
-    "local_repositories": [
-        {
-            "type": "path",
-            "url": "./addons/*",
-            "symlink": true
-        },
-        {
-            "type": "path",
-            "url": "./features/*",
-            "symlink": true
-        }
-    ],
     "autoload": {
         "psr-4": {
             "Xtend\\Extensions\\Lunar\\": "src"
