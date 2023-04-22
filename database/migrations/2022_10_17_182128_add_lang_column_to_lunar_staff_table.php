@@ -3,7 +3,6 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Lunar\Base\Migration;
-use Lunar\Models\Language;
 
 return new class extends Migration
 {
@@ -11,6 +10,7 @@ return new class extends Migration
     {
         Schema::table($this->prefix.'staff', function (Blueprint $table) {
             $table->foreignId('language_id')
+                ->default(1)
                 ->after('id')->constrained($this->prefix.'languages');
         });
     }
