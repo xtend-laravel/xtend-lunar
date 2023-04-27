@@ -16,6 +16,7 @@ use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderShow;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Product\Options\OptionEdit;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Product\Options\OptionsIndex;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Product\Options\OptionValueEdit;
+use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Staff\StaffCreate;
 use XtendLunar\Features\SidebarMenu\Menu\SettingsMenu;
 use XtendLunar\Features\SidebarMenu\Menu\SidebarMenu;
 
@@ -54,6 +55,8 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         Livewire::component('hub.components.settings.product.options.index', OptionsIndex::class);
         Livewire::component('hub.components.settings.product.option-edit', OptionEdit::class);
         Livewire::component('hub.components.settings.product.option-value-edit', OptionValueEdit::class);
+
+        Livewire::component('hub.components.settings.staff.create', StaffCreate::class);
     }
 
     protected function registerOrderComponents(): void

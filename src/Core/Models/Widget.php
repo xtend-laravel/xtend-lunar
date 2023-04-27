@@ -14,6 +14,19 @@ class Widget extends Model
         'params' => 'array',
     ];
 
+    protected $fillable = [
+        'type',
+        'name',
+        'component',
+        'col_start',
+        'row_start',
+        'cols',
+        'rows',
+        'data',
+        'params',
+        'enabled',
+    ];
+
     public function slots(): BelongsToMany
     {
         return $this->belongsToMany(
