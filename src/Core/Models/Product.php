@@ -32,6 +32,7 @@ class Product extends \Lunar\Models\Product
         'legacy_data',
         'product_type_id',
         'status',
+        'stock',
     ];
 
     /**
