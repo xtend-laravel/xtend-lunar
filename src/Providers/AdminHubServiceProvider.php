@@ -13,6 +13,7 @@ use Xtend\Extensions\Lunar\Admin\Listeners\SetStaffAuthMiddlewareListener;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderAddress;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderDiscount;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderShow;
+use Xtend\Extensions\Lunar\Admin\Livewire\Components\Products\Variants\VariantShow;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Product\Options\OptionEdit;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Product\Options\OptionsIndex;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Product\Options\OptionValueEdit;
@@ -57,6 +58,16 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         Livewire::component('hub.components.settings.product.option-value-edit', OptionValueEdit::class);
 
         Livewire::component('hub.components.settings.staff.create', StaffCreate::class);
+    }
+
+    /**
+     * Register the components used in the products area.
+     *
+     * @return void
+     */
+    protected function registerProductComponents()
+    {
+        Livewire::component('hub.components.products.variants.show', VariantShow::class);
     }
 
     protected function registerOrderComponents(): void
