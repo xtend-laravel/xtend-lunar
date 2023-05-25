@@ -90,10 +90,6 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
     protected function registerMenuBuilder(): void
     {
         Event::listen(LocaleUpdated::class, function () {
-            if (Feature::active('sidebar-menu')) {
-                SidebarMenu::make();
-                SettingsMenu::make();
-            }
             OrderActionsMenu::make();
         });
     }
