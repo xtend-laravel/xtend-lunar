@@ -4,8 +4,6 @@ namespace Xtend\Extensions\Lunar\Core\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Pipeline\Pipeline;
-use Lunar\Pipelines\Cart\Calculate;
 
 /**
  * Class Cart
@@ -33,18 +31,5 @@ class Cart extends \Lunar\Models\Cart
     public function customer()
     {
         return $this->belongsTo(Customer::class);
-    }
-
-    public function calculate(): \Lunar\Models\Cart
-    {
-        $cart = app(Pipeline::class)
-        ->send($this)
-        ->through(
-            config('lunar.cart.pipelines.cart', [
-                Calculate::class,
-            ])
-        )->thenReturn();
-
-        return $cart;
     }
 }
