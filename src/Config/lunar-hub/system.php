@@ -11,5 +11,5 @@ return [
         'notifications',
     ],
     'layout_width' => 'w-full',
-    'path' => 'hub',
+    'path' => '',
 ];
