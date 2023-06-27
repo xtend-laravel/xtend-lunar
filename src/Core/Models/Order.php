@@ -4,6 +4,7 @@ namespace Xtend\Extensions\Lunar\Core\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Notifications\Notifiable;
+use Lunar\Base\Casts\DiscountBreakdown;
 use Lunar\Base\Casts\Price;
 use Lunar\Base\Casts\TaxBreakdown;
 
@@ -21,6 +22,7 @@ class Order extends \Lunar\Models\Order
      */
     protected $casts = [
         'tax_breakdown' => TaxBreakdown::class,
+        'discount_breakdown' => DiscountBreakdown::class,
         'meta' => 'object',
         'placed_at' => 'datetime',
         'sub_total' => Price::class,
