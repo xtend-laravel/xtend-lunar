@@ -5,11 +5,16 @@ namespace Xtend\Extensions\Lunar\Providers;
 use Illuminate\Foundation\Events\LocaleUpdated;
 use Illuminate\Routing\Events\RouteMatched;
 use Illuminate\Support\Facades\Event;
-use Laravel\Pennant\Feature;
 use Livewire\Livewire;
 use Lunar\Hub\AdminHubServiceProvider as AdminHubBaseServiceProvider;
+use Lunar\Hub\Http\Livewire\Components\Collections\CollectionGroupsIndex;
+use Lunar\Hub\Http\Livewire\Components\Collections\CollectionShow;
+use Lunar\Hub\Http\Livewire\Components\Collections\CollectionTree;
+use Lunar\Hub\Http\Livewire\Components\Collections\CollectionTreeSelect;
+use Lunar\Hub\Http\Livewire\Components\Collections\SideMenu;
 use Lunar\Hub\Menu\OrderActionsMenu;
 use Xtend\Extensions\Lunar\Admin\Listeners\SetStaffAuthMiddlewareListener;
+use Xtend\Extensions\Lunar\Admin\Livewire\Components\Collections\CollectionGroupShow;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderAddress;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderDiscount;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Orders\OrderShow;
@@ -58,6 +63,21 @@ class AdminHubServiceProvider extends AdminHubBaseServiceProvider
         Livewire::component('hub.components.settings.product.option-value-edit', OptionValueEdit::class);
 
         Livewire::component('hub.components.settings.staff.create', StaffCreate::class);
+    }
+
+    /**
+     * Register the components used in the collections area.
+     *
+     * @return void
+     */
+    protected function registerCollectionComponents()
+    {
+        Livewire::component('hub.components.collections.sidemenu', SideMenu::class);
+        Livewire::component('hub.components.collections.collection-groups.index', CollectionGroupsIndex::class);
+        Livewire::component('hub.components.collections.collection-groups.show', CollectionGroupShow::class);
+        Livewire::component('hub.components.collections.show', CollectionShow::class);
+        Livewire::component('hub.components.collections.collection-tree', CollectionTree::class);
+        Livewire::component('hub.components.collections.collection-tree-select', CollectionTreeSelect::class);
     }
 
     /**
