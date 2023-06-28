@@ -18,7 +18,6 @@ class CollectionGroupShow extends LunarCollectionGroupShow
      */
     public function createCollection()
     {
-        dd('createCollection');
         $rules = Arr::only($this->rules(), ['collection.name', 'slug']);
 
         $this->validate($rules, [
@@ -44,6 +43,7 @@ class CollectionGroupShow extends LunarCollectionGroupShow
             ]),
         ], $this->collectionParent);
 
+        // @todo find out why nested sets parent is not set - temp workaround
         $collection->setParentId($this->collectionParent->id)->save();
 
         if ($this->slug) {
