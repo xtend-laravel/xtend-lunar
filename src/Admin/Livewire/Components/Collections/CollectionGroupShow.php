@@ -44,7 +44,9 @@ class CollectionGroupShow extends LunarCollectionGroupShow
         ], $this->collectionParent);
 
         // @todo find out why nested sets parent is not set - temp workaround
-        $collection->setParentId($this->collectionParent->id)->save();
+        if ($this->collectionParent) {
+            $collection->setParentId($this->collectionParent?->id)->save();
+        }
 
         if ($this->slug) {
             $collection->urls()->create([
