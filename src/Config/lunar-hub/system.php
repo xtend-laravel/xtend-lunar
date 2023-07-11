@@ -12,4 +12,7 @@ return [
     ],
     'layout_width' => 'w-full',
     'path' => '',
+    'middleware' => [
+        'web',
+    ],
 ];
