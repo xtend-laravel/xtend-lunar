@@ -33,6 +33,7 @@ class Product extends \Lunar\Models\Product
         'product_type_id',
         'status',
         'stock',
+        'sku',
     ];
 
     /**
