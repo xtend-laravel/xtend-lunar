@@ -21,7 +21,7 @@ return [
     | true, otherwise if brand is optional, set to false.
     |
     */
-    'require_brand' => true,
+    'require_brand' => false,
 
     /*
     |--------------------------------------------------------------------------
