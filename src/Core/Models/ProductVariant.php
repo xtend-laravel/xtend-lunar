@@ -15,4 +15,11 @@ class ProductVariant extends \Lunar\Models\ProductVariant
         'attribute_data' => AsAttributeData::class,
         'legacy_data' => AsCollection::class,
     ];
+
+    public function getThumbnail()
+    {
+        return $this->images->first(function ($media) {
+            return (bool) $media->pivot->primary;
+        }) ?: $this->product->thumbnail;
+    }
 }
