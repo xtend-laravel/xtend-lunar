@@ -4,13 +4,11 @@ namespace Xtend\Extensions\Lunar\Core\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Lunar\Base\Traits\HasPersonalDetails;
 
 class Address extends \Lunar\Models\Address
 {
     use HasPersonalDetails;
-    use SoftDeletes;
 
     /**
      * {@inheritDoc}
