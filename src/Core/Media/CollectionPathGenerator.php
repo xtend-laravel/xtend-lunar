@@ -5,7 +5,7 @@ namespace Xtend\Extensions\Lunar\Core\Media;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\Support\PathGenerator\PathGenerator;
 
-class ProductPathGenerator implements PathGenerator
+class CollectionPathGenerator implements PathGenerator
 {
     /*
      * Get the path for the given media, relative to the root storage path.
@@ -39,7 +39,7 @@ class ProductPathGenerator implements PathGenerator
         $prefix = config('media-library.prefix', '');
 
         if ($prefix !== '') {
-            return $prefix.'/products/'.$media->model->getKey();
+            return $prefix.'/collections/'.$media->model->getKey();
         }
 
         return $media->model->getKey();
