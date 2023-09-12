@@ -23,28 +23,20 @@ use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Product\Options\Op
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Product\Options\OptionsIndex;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Product\Options\OptionValueEdit;
 use Xtend\Extensions\Lunar\Admin\Livewire\Components\Settings\Staff\StaffCreate;
-use XtendLunar\Features\SidebarMenu\Menu\SettingsMenu;
-use XtendLunar\Features\SidebarMenu\Menu\SidebarMenu;
 
 class AdminHubServiceProvider extends AdminHubBaseServiceProvider
 {
-    protected $root = __DIR__.'/../Config/lunar-hub';
-
     public function register(): void
     {
-        $this->registerWithConfig();
+        //$this->registerWithConfig();
         $this->loadRoutesFrom(__DIR__.'/../Admin/Routes/web.php');
     }
 
     protected function registerWithConfig(): void
     {
         collect($this->configFiles)->each(function ($config) {
-            config([
-                "lunar-hub.$config" => array_merge(
-                    config("lunar-hub.$config"),
-                    include_once("{$this->root}/$config.php"),
-                ),
-            ]);
+            $path = __DIR__.'/../Config/lunar-hub/'.$config.'.php';
+            $this->mergeConfigFrom($path, 'lunar-hub.'.$config);
         });
     }
 

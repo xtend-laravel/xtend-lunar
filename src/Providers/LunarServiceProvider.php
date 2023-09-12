@@ -8,11 +8,16 @@ class LunarServiceProvider extends LunarBaseServiceProvider
 {
     public function register(): void
     {
+        //$this->registerWithConfig();
+
+        parent::register();
+    }
+
+    protected function registerWithConfig(): void
+    {
         collect($this->configFiles)->each(function ($config) {
             $path = __DIR__.'/../Config/lunar/'.$config.'.php';
             $this->mergeConfigFrom($path, 'lunar.'.$config);
         });
-
-        parent::register();
     }
 }
