@@ -12,7 +12,7 @@ class CollectionPathGenerator implements PathGenerator
      */
     public function getPath(Media $media): string
     {
-        return $this->getBasePath($media);
+        return $this->getBasePath($media).'/';
     }
 
     /*
@@ -36,12 +36,6 @@ class CollectionPathGenerator implements PathGenerator
      */
     protected function getBasePath(Media $media): string
     {
-        $prefix = config('media-library.prefix', '');
-
-        if ($prefix !== '') {
-            return $prefix.'/collections/'.$media->model->getKey();
-        }
-
-        return $media->model->getKey();
+        return '/collections/' . $media->getKey();
     }
 }
