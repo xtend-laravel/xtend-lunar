@@ -10,11 +10,13 @@ use Lunar\Base\Casts\AsAttributeData;
 use Lunar\Base\Traits\LogsActivity;
 use Lunar\Models\Cart;
 use Lunar\Models\Language;
+use XtendLunar\Features\NotifyTimeline\Concerns\HasModelNotification;
 
 class Customer extends \Lunar\Models\Customer
 {
     use LogsActivity;
     use Notifiable;
+    use HasModelNotification;
 
     /**
      * {@inheritDoc}
