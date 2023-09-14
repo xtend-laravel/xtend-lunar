@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Lunar\Base\Casts\DiscountBreakdown;
 use Lunar\Base\Casts\Price;
 use Lunar\Base\Casts\TaxBreakdown;
+use XtendLunar\Features\NotifyTimeline\Concerns\HasModelNotification;
 
 /**
  * Class Order
@@ -16,6 +17,7 @@ use Lunar\Base\Casts\TaxBreakdown;
 class Order extends \Lunar\Models\Order
 {
     use Notifiable;
+    use HasModelNotification;
 
     /**
      * {@inheritDoc}
@@ -35,9 +37,14 @@ class Order extends \Lunar\Models\Order
 
     protected static function booted(): void
     {
-        // static::created(function (self $order) {
-        //     //$order->notify(static::orderNotification($order));
-        // });
+        static::created(function (self $order) {
+            $order->notify(static::makeNotification(
+                type: 'success',
+                title: 'New order placed successfully!',
+                body: "**{$order->customer->fullName}** ordered **{$order->lines->count()}** products.",
+                route: route('hub.orders.show', ['order' => $order]),
+            ));
+        });
     }
 
     /**

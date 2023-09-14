@@ -29,7 +29,12 @@ class Customer extends \Lunar\Models\Customer
     protected static function booted(): void
     {
         static::created(function (self $customer) {
-            //$customer->notify(static::customerNotification($customer));
+            $customer->notify(static::makeNotification(
+                type: 'success',
+                title: 'New customer created successfully!',
+                body: "System detected new customer registration named **{$customer->fullName}**.",
+                route: route('hub.customers.show', ['customer' => $customer]),
+            ));
         });
     }
 
