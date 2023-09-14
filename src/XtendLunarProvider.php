@@ -20,6 +20,7 @@ use Lunar\Models\ProductVariant;
 use Xtend\Extensions\Lunar\Providers\AdminHubServiceProvider;
 use XtendLunar\Features\FilamentTables\FilamentTablesProvider;
 use XtendLunar\Features\FormBuilder\FormBuilderProvider;
+use XtendLunar\Features\NotifyTimeline\NotifyTimelineProvider;
 use XtendLunar\Features\PaymentGateways\PaymentGatewaysProvider;
 use XtendLunar\Features\ProductFeatures\ProductFeaturesProvider;
 use XtendLunar\Features\ProductOptions\ProductOptionsProvider;
@@ -55,6 +56,7 @@ class XtendLunarProvider extends ServiceProvider
             'product-options' => ProductOptionsProvider::class,
             'payment-gateways' => PaymentGatewaysProvider::class,
             'shipping-providers' => ShippingProvidersProvider::class,
+            'notify-timeline' => NotifyTimelineProvider::class,
         ]);
     }
 
