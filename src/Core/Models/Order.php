@@ -37,13 +37,15 @@ class Order extends \Lunar\Models\Order
 
     protected static function booted(): void
     {
-        static::created(function (self $order) {
-            $order->notify(static::makeNotification(
-                type: 'success',
-                title: 'New order placed successfully!',
-                body: "**{$order->customer->fullName}** ordered **{$order->lines->count()}** products.",
-                route: route('hub.orders.show', ['order' => $order]),
-            ));
+        static::created(function (self | \Lunar\Models\Order $order) {
+            if ($order->customer) {
+                $order->notify(static::makeNotification(
+                    type: 'success',
+                    title: 'New order placed successfully!',
+                    body: "**{$order->customer->fullName}** ordered **{$order->lines->count()}** products.",
+                    route: route('hub.orders.show', ['order' => $order]),
+                ));
+            }
         });
     }
 
