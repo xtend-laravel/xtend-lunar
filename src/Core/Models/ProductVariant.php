@@ -16,6 +16,18 @@ class ProductVariant extends \Lunar\Models\ProductVariant
         'legacy_data' => AsCollection::class,
     ];
 
+    /**
+     * {@inheritDoc}
+     */
+    protected static function booting(): void
+    {
+        static::updated(function (ProductVariant $productVariant) {
+            $product = $productVariant->product;
+            $product->stock = $product->variants->sum('stock');
+            $product->saveQuietly();
+        });
+    }
+
     public function getThumbnail()
     {
         return $this->images->first(function ($media) {
