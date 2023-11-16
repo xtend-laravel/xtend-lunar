@@ -4,6 +4,7 @@ namespace Xtend\Extensions\Lunar\Core\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Lunar\Base\Casts\AsAttributeData;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProductVariant extends \Lunar\Models\ProductVariant
 {
@@ -28,7 +29,7 @@ class ProductVariant extends \Lunar\Models\ProductVariant
         });
     }
 
-    public function getThumbnail()
+    public function getThumbnail(): Media
     {
         return $this->images->first(function ($media) {
             return (bool) $media->pivot->primary;
