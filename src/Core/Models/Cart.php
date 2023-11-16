@@ -3,6 +3,7 @@
 namespace Xtend\Extensions\Lunar\Core\Models;
 
 use Illuminate\Database\Eloquent\Casts\AsCollection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
 
 /**
@@ -28,7 +29,7 @@ class Cart extends \Lunar\Models\Cart
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function customer()
+    public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
     }
