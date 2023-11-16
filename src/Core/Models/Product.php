@@ -41,7 +41,7 @@ class Product extends \Lunar\Models\Product
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function collections()
+    public function collections(): BelongsToMany
     {
         $prefix = config('lunar.database.table_prefix');
 
