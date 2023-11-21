@@ -29,7 +29,7 @@ class ProductVariant extends \Lunar\Models\ProductVariant
         });
     }
 
-    public function getThumbnail(): Media
+    public function getThumbnail(): ?Media
     {
         return $this->images->first(function ($media) {
             return (bool) $media->pivot->primary;
